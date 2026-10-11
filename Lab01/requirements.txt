@@ -1,0 +1,7 @@
+# Wersje dobrane pod Windows + Python 3.11, CPU wystarczy.
+# Na GPU nie polegamy: GTX1050 moze nie dogadywac sie z nowszym CUDA.
+numpy==1.26.4
+matplotlib==3.9.2
+scikit-learn==1.6.1
+tensorflow==2.19.1
+torch==2.5.1

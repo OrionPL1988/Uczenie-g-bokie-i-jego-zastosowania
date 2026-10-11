@@ -1,0 +1,22 @@
+LAB01 - automatyczne wnioski na podstawie faktycznego uruchomienia
+Tryb: pelny
+
+1.1. Po standaryzacji kazdy kanal ma srednia bliska 0 i odchylenie bliskie 1; wyniki TF i Torch sa zgodne.
+2.2. Gradient numeryczny i autograd: blad wzgledny = 1.466e-11.
+3. Regresja liniowa: GD MSE test = 0.5559, baseline = 1.3107.
+4. Graniczny learning rate: 0.493801. Powyzej tego progu krok GD jest niestabilny.
+5. Porownanie mini-batch vs full-batch: wspolny learning rate = 0.0002.
+   Poprzednie lr=0.05 bylo niestabilne dla malych batchy; po poprawce analizujemy zbieznosc.
+   B=16: koncowe MSE=0.5386, czas=0.738 s.
+   Full-batch: koncowe MSE=5.5108, czas=0.046 s.
+   PyTorch DataLoader (B=64): MSE=0.5971.
+   Mniejszy batch wykonuje wiecej aktualizacji parametrow na epoke, ale placi za to wiekszym narzutem petli.
+   Na tym konkretnym komputerze warto porownywac zarowno MSE do epoki, jak i MSE do czasu.
+6.1. Stopien najlepiej dopasowany do walidacji: D=3, MSE wal=0.0911.
+6.2. Ridge D=15: najlepsza lambda=3.162e-05, MSE wal=0.1050.
+   O wygranej modelu decyduje walidacja, a nie najnizszy blad treningowy.
+
+Dodatkowe zadanie - odleglosc od minimum (1,1):
+   GD (lr=1e-3): 0.450749
+   Momentum (lr=2e-4): 0.11053
+   Adam (lr=0.02): 1.25557e-05

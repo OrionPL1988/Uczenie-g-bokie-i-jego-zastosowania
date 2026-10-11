@@ -1,0 +1,73 @@
+{
+  "data_wykonania": "2026-10-11T13:27:02+02:00",
+  "tryb": "pelny",
+  "python": "3.11.9",
+  "numpy": "1.26.4",
+  "tensorflow": "2.19.1",
+  "pytorch": "2.5.1+cpu",
+  "keras": "3.15.1",
+  "urzadzenie_pytorch": "cpu",
+  "zadanie_1_1_zgodnosc_tf_torch": true,
+  "zadanie_1_2_zgodnosc_z_petla": true,
+  "zadanie_2_1_grad_analit": [
+    0.27105190217773933,
+    -0.6555857473520893
+  ],
+  "zadanie_2_1_grad_tf": [
+    0.27105190217773933,
+    -0.6555857473520893
+  ],
+  "zadanie_2_1_grad_torch": [
+    0.27105190217773933,
+    -0.6555857473520893
+  ],
+  "zadanie_2_2_blad_wzgledny": 1.466103031535036e-11,
+  "zadanie_3_1_mse_train_numpy": 0.5179331255931139,
+  "zadanie_3_1_mse_test_numpy": 0.5558926086208509,
+  "mse_train_optymalne": 0.5179331255246699,
+  "zadanie_3_2_mse_train_tf": 0.5179330706596375,
+  "mse_train_torch": 0.5179330706596375,
+  "zadanie_4_1_lr_kryt": 0.4938012896040923,
+  "zadanie_4_1_lr_eksperyment": {
+    "0.001": 2.884470280794295,
+    "0.01": 0.595620368555966,
+    "0.1": 0.5183966513795593,
+    "0.2469": 0.5179341994638367,
+    "0.4839": 0.5179331257985715,
+    "0.5185": 61055568812777.88
+  },
+  "zadanie_5_1_learning_rate": 0.0002,
+  "zadanie_5_1_mse_batch": {
+    "B = 16": 0.5385962928887652,
+    "B = 64": 0.6159481298361724,
+    "B = 256": 1.6843812278030146,
+    "full-batch": 5.510836114812344
+  },
+  "zadanie_5_1_mse_dataloader_pytorch": 0.597149133682251,
+  "zadanie_6_1_najlepszy_D": 3,
+  "zadanie_6_1_mse_val": 0.0911203095045611,
+  "zadanie_6_2_najlepsza_lambda": 3.1622776601683795e-05,
+  "zadanie_6_2_mse_val": 0.10504007339669083,
+  "zadanie_dodatkowe_odleglosci": {
+    "GD (lr=1e-3)": 0.4507490798696685,
+    "Momentum (lr=2e-4)": 0.11052981893240493,
+    "Adam (lr=0.02)": 1.2555728244884143e-05
+  },
+  "wykresy": [
+    "wyniki\\wykresy\\01_autograd_wykres.png",
+    "wyniki\\wykresy\\02_gradient_check.png",
+    "wyniki\\wykresy\\03_dane_syntetyczne.png",
+    "wyniki\\wykresy\\04_gd_jedna_cecha.png",
+    "wyniki\\wykresy\\05_powierzchnia_straty.png",
+    "wyniki\\wykresy\\06_gd_california.png",
+    "wyniki\\wykresy\\07_wagi_modelu.png",
+    "wyniki\\wykresy\\08_porownanie_bibliotek.png",
+    "wyniki\\wykresy\\09_learning_rate.png",
+    "wyniki\\wykresy\\10_minibatch.png",
+    "wyniki\\wykresy\\11_przeuczenie_przyklady.png",
+    "wyniki\\wykresy\\12_train_val_stopnie.png",
+    "wyniki\\wykresy\\13_ridge.png",
+    "wyniki\\wykresy\\14_rosenbrock_opt.png"
+  ],
+  "status": "OK - wszystkie sekcje wykonane"
+}

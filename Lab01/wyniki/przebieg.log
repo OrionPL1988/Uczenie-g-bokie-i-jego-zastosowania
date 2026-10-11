@@ -1,0 +1,222 @@
+
+============================================================================
+  3: 0. Sprzet i biblioteki
+============================================================================
+NVIDIA (informacyjnie):
+ Sun Oct 11 13:26:27 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 565.90                 Driver Version: 565.90         CUDA Version: 12.7     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce GTX 1050      WDDM  |   00000000:01:00.0 Off |                  N/A |
+| N/A   54C    P8             N/A / 5001W |       0MiB /   4096MiB |      1%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+SZYBKI_TRYB = False
+NumPy      : 1.26.4
+TensorFlow : 2.19.1 | Keras: 3.15.1
+PyTorch    : 2.5.1+cpu
+GPU widziane przez TensorFlow: []
+CUDA dostępna w PyTorch      : False
+DEVICE = cpu
+Tryb PyTorch: CPU (bezpieczny dla Windows)
+
+============================================================================
+  9: 1. Tensory - podstawy i operacje
+============================================================================
+NumPy : (2, 3) float64 ndim = 2
+TF    : (2, 3) <dtype: 'float64'>
+Torch : torch.Size([2, 3]) torch.float64
+<dtype: 'float32'> torch.float32
+<class 'numpy.ndarray'> <class 'numpy.ndarray'>
+tensor po zmianie tablicy: tensor([99.,  0.,  0.], dtype=torch.float64)
+[[0. 0. 0.]
+ [0. 0. 0.]] 
+ tensor([[0., 0., 0.],
+        [0., 0., 0.]])
+[0 2 4 6 8] tensor([0, 2, 4, 6, 8])
+[[-1.499947   -1.2420495 ]
+ [ 0.52283144 -0.35879248]]
+tensor([[0.3367, 0.1288],
+        [0.2345, 0.2303]])
+tf.Variable po assign_add: [2. 3. 4.]
+torch po add_: tensor([2., 3., 4.])
+kształt: (2, 3, 4) (2, 3, 4)
+element [1, 2, 3]: 23.0 23.0
+wycinek [:, 0, :2]:
+ tensor([[ 0.,  1.],
+        [12., 13.]])
+(4, 6) torch.Size([4, 6])
+NHWC: (8, 28, 28, 3) -> NCHW: (8, 3, 28, 28)
+TF transpose: (8, 3, 28, 28)
+(3,1) + (1,4) -> (3, 4)
+tensor([[11., 21., 31., 41.],
+        [12., 22., 32., 42.],
+        [13., 23., 33., 43.]], dtype=torch.float64)
+(5,3) + (3,) -> (5, 3)
+Zły kształt błędu: (3, 3)  <- powinno być (3,)
+Poprawnie       : (3,)
+Błąd broadcastingu: The size of tensor a (3) must match the size of tensor b (4) at non-singleton di
+kształt wyniku: (4, 2)
+zgodne: True True
+batch matmul: torch.Size([10, 2, 5])
+suma po wierszach: tensor([ 3., 12.]) | keepdim: torch.Size([2, 1])
+TF mean po kolumnach: [1.5 2.5 3.5]
+
+============================================================================
+  21: Zadanie 1.1: standaryzacja obrazow
+============================================================================
+TF  średnie per kanał: [ 0. -0. -0.]
+TF  std per kanał    : [1. 1. 1.]
+PT  średnie per kanał: [0. 0. 0.]
+Zgodność TF vs PyTorch: True
+
+============================================================================
+  24: Zadanie 1.2: odleglosci bez petli
+============================================================================
+NumPy - zgodność z wersją pętlową: True
+Torch - zgodność z wersją pętlową: True
+n = 400: pętla 0.881 s, wektorowo 0.00298 s, przyspieszenie ~295x
+
+============================================================================
+  27: 1.6: porownanie CPU i GPU
+============================================================================
+PyTorch CPU: 815.7 ms  (N = 4096)
+CUDA nieaktywna - pomijam benchmark GPU (to nie błąd).
+TF CPU: 599.8 ms
+
+============================================================================
+  29: 2. Automatyczne rozniczkowanie
+============================================================================
+TF     f'(2) = 14.0
+PyTorch f'(2) = 14.0
+Analitycznie  = 14.0
+maks. |TF - analityczna|     : 1.9073486e-06
+maks. |PyTorch - analityczna|: 1.9073486e-06
+[WYKRES] wyniki\wykresy\01_autograd_wykres.png
+wywołanie 1: x.grad = 6.0
+wywołanie 2: x.grad = 12.0
+wywołanie 3: x.grad = 18.0
+po zero_(): 0.0
+f'(1.5) = 1.1036007  f''(1.5) = -1.354768
+analitycznie: 1.1036007891056088 -1.3547680765706758
+
+============================================================================
+  35: Zadanie 2.1: gradient dwoch zmiennych
+============================================================================
+analitycznie: 0.27105190217773933 -0.6555857473520893
+TF          : [ 0.2710519  -0.65558575]
+PyTorch     : [ 0.2710519  -0.65558575]
+
+============================================================================
+  37: Zadanie 2.2: gradient numeryczny
+============================================================================
+autograd : [-3.226934 -2.06264  -0.560624  0.037266]
+numeryczny: [-3.226934 -2.06264  -0.560624  0.037266]
+błąd względny (h=1e-5): 1.466103031535036e-11
+[WYKRES] wyniki\wykresy\02_gradient_check.png
+
+============================================================================
+  40: 3. Regresja liniowa na jednej cesze
+============================================================================
+[WYKRES] wyniki\wykresy\03_dane_syntetyczne.png
+GD     : w = 2.5128, b = -1.0130, MSE = 0.9589
+polyfit: w = 2.5128, b = -1.0130
+[WYKRES] wyniki\wykresy\04_gd_jedna_cecha.png
+[WYKRES] wyniki\wykresy\05_powierzchnia_straty.png
+
+============================================================================
+  45: 3.3: California Housing - rzeczywiste dane
+============================================================================
+cechy: ['MedInc', 'HouseAge', 'AveRooms', 'AveBedrms', 'Population', 'AveOccup', 'Latitude', 'Longitude']
+X: (20640, 8)  y: (20640,)
+train: (16512, 8)  test: (4128, 8)
+średnie cech po standaryzacji (train): [-0. -0.  0. -0. -0. -0.  0. -0.]
+Baseline (średnia) MSE test: 1.3107
+Najmniejsze kwadraty: MSE train = 0.5179  MSE test = 0.5559
+
+============================================================================
+  49: Zadanie 3.1: regresja NumPy
+============================================================================
+czas: 0.08 s
+MSE train GD = 0.5179  vs  optimum = 0.5179  (różnica 0.00%)
+MSE test GD  = 0.5559
+max |w_gd - w_ls| = 0.0
+[WYKRES] wyniki\wykresy\06_gd_california.png
+[WYKRES] wyniki\wykresy\07_wagi_modelu.png
+
+============================================================================
+  52: 3.4-3.5: regresja PyTorch
+============================================================================
+PyTorch (autograd): MSE train = 0.5179
+max |w_torch - w_ls| = 0.0
+nn.Linear + SGD: MSE train = 0.5179, MSE test = 0.5559
+
+============================================================================
+  56: Zadanie 3.2: regresja TensorFlow
+============================================================================
+MSE train: NumPy 0.51793 | PyTorch 0.51793 | TF 0.51793
+[WYKRES] wyniki\wykresy\08_porownanie_bibliotek.png
+
+============================================================================
+  59: Zadanie 4.1: learning rate
+============================================================================
+lambda_min = 0.0946, lambda_max = 4.0502, uwarunkowanie = 42.8
+teoretyczny próg rozbieżności lr_kryt = 2/lambda_max = 0.4938
+[WYKRES] wyniki\wykresy\09_learning_rate.png
+lr        | MSE po ostatniej epoce | epoki do 1% od optimum
+0.001     |                  2.884 | nie osiągnięto
+0.01      |                 0.5956 | nie osiągnięto
+0.1       |                 0.5184 | 109
+0.2469    |                 0.5179 | 44
+0.4839    |                 0.5179 | 23
+0.5185    |              6.106e+13 | nie osiągnięto
+
+============================================================================
+  64: Zadanie 5.1: mini-batch NumPy
+============================================================================
+    B = 16: kroków/epokę =  1032, MSE końcowe = 0.5386, czas = 0.74 s
+    B = 64: kroków/epokę =   258, MSE końcowe = 0.6159, czas = 0.23 s
+   B = 256: kroków/epokę =    65, MSE końcowe = 1.6844, czas = 0.08 s
+full-batch: kroków/epokę =     1, MSE końcowe = 5.5108, czas = 0.05 s
+[WYKRES] wyniki\wykresy\10_minibatch.png
+
+============================================================================
+  67: 5.1: DataLoader PyTorch
+============================================================================
+DataLoader + SGD (B = 64): MSE train = 0.5971
+
+============================================================================
+  69: 6. Regresja wielomianowa
+============================================================================
+[WYKRES] wyniki\wykresy\11_przeuczenie_przyklady.png
+
+============================================================================
+  71: Zadanie 6.1: stopien wielomianu
+============================================================================
+najlepszy stopień wg walidacji: 3  MSE val = 0.0911
+[WYKRES] wyniki\wykresy\12_train_val_stopnie.png
+
+============================================================================
+  73: Zadanie 6.2: regularyzacja Ridge
+============================================================================
+najlepsza lambda = 3.16e-05, MSE val = 0.1050
+[WYKRES] wyniki\wykresy\13_ridge.png
+
+============================================================================
+  78: Dodatkowe: GD vs Momentum vs Adam
+============================================================================
+[WYKRES] wyniki\wykresy\14_rosenbrock_opt.png
+
+============================================================================
+  KONIEC: Podsumowanie i raport do folderu wyniki
+============================================================================
+
+Wykresy: 14
+Raport: C:\Users\krzys\Downloads\Lab01_VSCode_Komplet\Lab01_VSCode_Krzysztof\wyniki\podsumowanie.json
+Wynik: OK - wszystkie sekcje wykonane
+Najwazniejsze: MSE NumPy/TF/PT = 0.51793 0.51793 0.51793
+LR krytyczny = 0.4938 | najlepszy D = 3 | najlepsza lambda = 3.1622776601683795e-05
