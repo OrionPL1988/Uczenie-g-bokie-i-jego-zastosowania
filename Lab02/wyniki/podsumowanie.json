@@ -1,0 +1,148 @@
+{
+  "tryb": "pełny",
+  "seed": 42,
+  "python": "3.11.9",
+  "numpy": "1.26.4",
+  "tensorflow": "2.19.1",
+  "keras": "3.15.1",
+  "pytorch": "2.14.1+cpu",
+  "device": "cpu",
+  "perceptron_liniowy": {
+    "accuracy": 1.0,
+    "epoki": 2
+  },
+  "perceptron_xor": {
+    "accuracy": 0.5,
+    "accuracy_noisy": 0.535,
+    "bledy_last": [
+      1,
+      3,
+      2,
+      3,
+      2
+    ]
+  },
+  "pochodne_autograd": {
+    "sigmoid": 5.551115123125783e-17,
+    "tanh": 2.220446049250313e-16,
+    "ReLU": 0.0,
+    "LeakyReLU (0.1)": 0.0,
+    "GELU": 2.220446049250313e-16
+  },
+  "normy_gradientow": {
+    "sigmoid": {
+      "pierwsza": 1.2810323006366697e-13,
+      "ostatnia": 1.7737263441085815
+    },
+    "tanh": {
+      "pierwsza": 0.10798659175634384,
+      "ostatnia": 0.15937155485153198
+    },
+    "relu": {
+      "pierwsza": 0.4384108781814575,
+      "ostatnia": 6.5119452476501465
+    }
+  },
+  "mlp_xor": {
+    "BCE": 0.00046874568435098,
+    "pred": [
+      4.177405899317971e-05,
+      0.9994728485786663,
+      0.9994694255495997,
+      0.000774522900666474
+    ]
+  },
+  "gradient_check": {
+    "W1": 7.767751499306396e-11,
+    "b1": 2.910652840261781e-11,
+    "W2": 2.958758000905006e-11,
+    "b2": 2.6957660573234093e-11
+  },
+  "keras_sequential": {
+    "accuracy_val": 0.9800000190734863,
+    "loss_val": 0.04603224992752075,
+    "parametry": 337
+  },
+  "liczby_parametrow": {
+    "sequential": 337,
+    "duzy": 2545,
+    "dense_28x28_512": 401920
+  },
+  "keras_circles": {
+    "accuracy_val": 0.9879999756813049,
+    "parametry": 193
+  },
+  "pytorch_moons": {
+    "accuracy_val": 0.988,
+    "loss_val": 0.035560160875320435
+  },
+  "siatka_architektur": {
+    "1x2": {
+      "accuracy_train": 0.8500000238418579,
+      "accuracy_val": 0.8420000076293945,
+      "parametry": 9
+    },
+    "1x8": {
+      "accuracy_train": 0.9399999976158142,
+      "accuracy_val": 0.8999999761581421,
+      "parametry": 33
+    },
+    "1x64": {
+      "accuracy_train": 0.9449999928474426,
+      "accuracy_val": 0.9020000100135803,
+      "parametry": 257
+    },
+    "2x2": {
+      "accuracy_train": 0.8500000238418579,
+      "accuracy_val": 0.8510000109672546,
+      "parametry": 15
+    },
+    "2x8": {
+      "accuracy_train": 0.8899999856948853,
+      "accuracy_val": 0.8460000157356262,
+      "parametry": 105
+    },
+    "2x64": {
+      "accuracy_train": 1.0,
+      "accuracy_val": 0.8809999823570251,
+      "parametry": 4417
+    },
+    "3x2": {
+      "accuracy_train": 0.5,
+      "accuracy_val": 0.5,
+      "parametry": 21
+    },
+    "3x8": {
+      "accuracy_train": 0.9300000071525574,
+      "accuracy_val": 0.9049999713897705,
+      "parametry": 177
+    },
+    "3x64": {
+      "accuracy_train": 1.0,
+      "accuracy_val": 0.8870000243186951,
+      "parametry": 8577
+    }
+  },
+  "najlepsza_architektura": "3x8",
+  "spirala_bonus": {
+    "accuracy_train": 0.9933333333333333,
+    "loss_last": 0.016852970788515297
+  },
+  "wykresy": [
+    "wyniki/wykresy/01_dane_liniowe.png",
+    "wyniki/wykresy/02_perceptron_liniowy.png",
+    "wyniki/wykresy/03_perceptron_xor.png",
+    "wyniki/wykresy/04_funkcje_aktywacji.png",
+    "wyniki/wykresy/05_pochodne_autograd.png",
+    "wyniki/wykresy/06_zanik_gradientu.png",
+    "wyniki/wykresy/07_mlp_xor.png",
+    "wyniki/wykresy/08_dane_moons.png",
+    "wyniki/wykresy/09_keras_sequential.png",
+    "wyniki/wykresy/10_keras_functional_circles.png",
+    "wyniki/wykresy/11_pytorch_mlp.png",
+    "wyniki/wykresy/12_siatka_architektur.png",
+    "wyniki/wykresy/13_spirala_numpy.png"
+  ],
+  "ostrzezenia": [],
+  "status": "OK - bez błędów testów"
+}

@@ -1,0 +1,11 @@
+LAB02 - Perceptron i MLP | wyniki z tego uruchomienia
+Tryb: pełny
+Perceptron klasyfikuje dane separowalne, ale nie rozwiązuje XOR.
+XOR perceptron accuracy: 0.500; MLP BCE: 0.00047.
+Keras Sequential val acc: 0.980.
+Keras Functional circles val acc: 0.988.
+PyTorch val acc: 0.988.
+Najlepsza architektura z siatki (walidacja): 3x8
+Spirala (bonus) accuracy: 0.993.
+Najważniejsze: nieliniowość rozwiązuje XOR, ale większa pojemność nie gwarantuje lepszej walidacji.
+Ostrzeżenia: brak

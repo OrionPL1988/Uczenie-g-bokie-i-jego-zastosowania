@@ -1,0 +1,10 @@
+# Lab02 - Windows / Python 3.11 (CPU wystarcza)
+# Jeśli środowisko z Lab01 już działa, zwykle wystarczy doinstalować brakujące scipy.
+numpy==1.26.4
+matplotlib>=3.8,<4
+scipy>=1.11,<2
+scikit-learn>=1.4,<2
+tensorflow==2.19.1
+keras>=3.9,<4
+torch>=2.5,<3
+ipykernel>=6.29,<7
