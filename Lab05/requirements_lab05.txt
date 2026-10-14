@@ -1,0 +1,9 @@
+# Użyj istniejącego .venv, jeśli w nim masz już PyTorch i sklearn.
+numpy>=1.26,<3
+pandas>=2.0,<3
+scipy>=1.11,<2
+scikit-learn>=1.4,<2
+matplotlib>=3.7,<4
+seaborn>=0.13,<1
+torch>=2.3,<3
+ipykernel>=6,<8

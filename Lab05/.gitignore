@@ -1,0 +1,14 @@
+# Lokalne środowiska / cache
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+# Pliki modeli (zostawiamy u siebie)
+*.pt
+*.pth
+*.pkl
+wyniki_full/modele/
+# Test FAST nie jest materiałem do oddania
+wyniki_fast/
+# Lokalne inne dane
+*.log

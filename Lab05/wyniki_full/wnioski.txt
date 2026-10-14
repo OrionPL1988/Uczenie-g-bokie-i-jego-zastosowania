@@ -1,0 +1,12 @@
+TRYB: full. Wersja FAST służy wyłącznie do testu działania.
+Breast Cancer: ROC-AUC MLP na teście = 0.9974.
+Próg 0.0453 dobrano na walidacji, nie na teście.
+Kalibracja MLP (Brier): przed 0.0176, po 0.0213.
+Wyciek przez selekcję cech: 0.900 (błędnie) vs 0.470 (pipeline).
+MLP vs LogReg, 95% CI różnicy z korektą Nadeau-Bengio: [-0.0034, +0.0028].
+CI różnicy obejmuje 0 - nie wykazano przewagi MLP.
+Regresja: MAE MLP = 0.3412; MAE HistGB = 0.3126.
+California Housing: cel jest ucięty blisko wartości 5, więc analiza reszt wymaga ostrożności.
+Cechy silnie skorelowane mogą zastępować się w permutation importance.
+Random search: najlepsze CV AUC = 0.9948, test AUC = 0.9980.
+Wyniku testu nie użyto do wyboru architektury, progu ani hiperparametrów.

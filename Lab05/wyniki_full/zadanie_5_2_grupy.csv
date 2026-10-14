@@ -1,0 +1,3 @@
+﻿model,KFold,GroupKFold
+RandomForest,0.9625,0.49000000000000005
+kNN (k=1),1.0,0.4625
