@@ -1,0 +1,12 @@
+Lab03 - wyniki lokalne (tryb: pełny)
+1.1 Fashion-MNIST: acc na teście = 0.876.
+1.2 Najwięcej pomyłek: Sweter -> Płaszcz.
+2. California Housing: MAE średniej = 0.905, linear = 0.533, MLP = 0.359.
+3. Callbacki: epok 200, najlepsza 198, MAE checkpointu = 0.366.
+4. Optim: najlepsze val_accuracy = RMSprop (0.886).
+4.2 Adam LR: loss 0.0001 = 0.39171266555786133, 0.1 = 1.039943814277649 (None=NaN/inf).
+5. Overfitting: luka train-val bez regular. = 0.208, z dropout = 0.117.
+6. Zapis: predykcje po wadze identyczne = True; po pelnym modelu = True.
+Usprawnienie na później: augmentacja obrazów Fashion-MNIST lub AdamW z porównaniem walidacji.
+UWAGA: dane Fashion-MNIST test tylko do raportu, dobór parametrów na walidacji.
+Ostrzezenia: brak

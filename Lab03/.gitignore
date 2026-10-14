@@ -1,0 +1,8 @@
+# W repo nie trzymam wag ani lokalnego Pythona.
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+wyniki/modele/
+wyniki/*.log
+*.keras
+*.weights.h5

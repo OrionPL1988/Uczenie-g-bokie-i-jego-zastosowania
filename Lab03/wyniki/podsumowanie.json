@@ -1,0 +1,178 @@
+{
+  "tryb": "pełny",
+  "seed": 42,
+  "zad_1_1": {
+    "val_accuracy_last": 0.8847000002861023,
+    "test_accuracy": 0.8762000203132629,
+    "test_loss": 0.3979606032371521,
+    "parametry": 235146
+  },
+  "zad_1_2": {
+    "accuracies_per_class": {
+      "T-shirt/top": 0.826,
+      "Spodnie": 0.982,
+      "Sweter": 0.714,
+      "Sukienka": 0.887,
+      "Płaszcz": 0.839,
+      "Sandał": 0.926,
+      "Koszula": 0.722,
+      "Sneaker": 0.984,
+      "Torba": 0.972,
+      "Botek": 0.91
+    },
+    "most_confused_pair": [
+      "Sweter",
+      "Płaszcz"
+    ],
+    "most_confused_count": 139
+  },
+  "zad_2_1": {
+    "mean_mae": 0.9052956700325012,
+    "mean_rmse": 1.144805666994401,
+    "linear_mae": 0.5333019495010376,
+    "linear_rmse": 0.7495267885165606
+  },
+  "zad_2_2": {
+    "mae_nn": 0.35921669006347656,
+    "rmse_nn": 0.5300993238355192,
+    "lepszy_od_liniowego": true
+  },
+  "zad_3_1": {
+    "epochs": 200,
+    "best_epoch": 198,
+    "early_stopped": false,
+    "lr_min": 9.999999747378752e-06,
+    "lr_was_reduced": true,
+    "loaded_model_test_mae": 0.36615651845932007,
+    "checkpoint_exists": true
+  },
+  "zad_4_1": [
+    {
+      "optymalizator": "RMSprop",
+      "best_val_accuracy": 0.8855999708175659,
+      "best_epoch": 10
+    },
+    {
+      "optymalizator": "Adam",
+      "best_val_accuracy": 0.882099986076355,
+      "best_epoch": 6
+    },
+    {
+      "optymalizator": "SGD+momentum",
+      "best_val_accuracy": 0.8719000220298767,
+      "best_epoch": 9
+    },
+    {
+      "optymalizator": "SGD",
+      "best_val_accuracy": 0.8353000283241272,
+      "best_epoch": 10
+    }
+  ],
+  "zad_4_2": {
+    "0.0001": {
+      "loss_last": 0.39171266555786133,
+      "loss_min": 0.39171266555786133
+    },
+    "0.001": {
+      "loss_last": 0.26337161660194397,
+      "loss_min": 0.26337161660194397
+    },
+    "0.01": {
+      "loss_last": 0.30409395694732666,
+      "loss_min": 0.30409395694732666
+    },
+    "0.1": {
+      "loss_last": 1.039943814277649,
+      "loss_min": 0.958803653717041
+    }
+  },
+  "zad_5_1": {
+    "dropout_val_acc_last": 0.8098999857902527,
+    "l2_val_acc_last": 0.7846999764442444
+  },
+  "zad_5_2": [
+    {
+      "wariant": "brak",
+      "best_val_accuracy": 0.8152999877929688,
+      "last_val_accuracy": 0.7735000252723694,
+      "last_train_minus_val": 0.2084999680519104,
+      "val_loss_min": 0.5953673720359802,
+      "val_loss_last": 1.5625648498535156
+    },
+    {
+      "wariant": "dropout_0.5",
+      "best_val_accuracy": 0.8201000094413757,
+      "last_val_accuracy": 0.8098999857902527,
+      "last_train_minus_val": 0.11710000038146973,
+      "val_loss_min": 0.5875077843666077,
+      "val_loss_last": 0.7663900256156921
+    },
+    {
+      "wariant": "L2_1e-3",
+      "best_val_accuracy": 0.8109999895095825,
+      "last_val_accuracy": 0.7846999764442444,
+      "last_train_minus_val": 0.1853000521659851,
+      "val_loss_min": 1.0896650552749634,
+      "val_loss_last": 1.1502739191055298
+    },
+    {
+      "wariant": "batchnorm",
+      "best_val_accuracy": 0.816100001335144,
+      "last_val_accuracy": 0.816100001335144,
+      "last_train_minus_val": 0.18389999866485596,
+      "val_loss_min": 0.7574685215950012,
+      "val_loss_last": 1.0026037693023682
+    },
+    {
+      "wariant": "BN+dropout_0.3",
+      "best_val_accuracy": 0.8113999962806702,
+      "last_val_accuracy": 0.795799970626831,
+      "last_train_minus_val": 0.19620001316070557,
+      "val_loss_min": 0.6047167778015137,
+      "val_loss_last": 1.1525274515151978
+    }
+  ],
+  "zad_6_1": {
+    "weights_predictions_equal": true,
+    "full_model_predictions_equal": true,
+    "val_acc_before_resume": 0.6324999928474426,
+    "val_acc_after_resume": 0.7081999778747559,
+    "models_saved": [
+      "wyniki\\modele\\wagi_dropout.weights.h5",
+      "wyniki\\modele\\model_dropout.keras"
+    ]
+  },
+  "bonus": {
+    "zatrzymano_po_progu": true,
+    "epochs": 9,
+    "best_val_accuracy": 0.8906000256538391
+  },
+  "biblioteki": {
+    "python": "3.11.9",
+    "numpy": "1.26.4",
+    "keras": "3.15.1",
+    "tensorflow": "2.19.1",
+    "backend": "tensorflow"
+  },
+  "wykresy": [
+    "wyniki/wykresy/01_przyk_adowe_obrazy_fashion_mnist_zbi_r_treningowy.png",
+    "wyniki/wykresy/02_mlp_demo_strata.png",
+    "wyniki/wykresy/03_1_1_mlp_256_128_strata.png",
+    "wyniki/wykresy/04_macierz_pomy_ek_mlp_demo_test.png",
+    "wyniki/wykresy/05_1_2_dok_adno_na_klas_mlp.png",
+    "wyniki/wykresy/06_1_2_dziesi_b_dnych_predykcji_prawda_model.png",
+    "wyniki/wykresy/07_2_2_regresja_mlp_strata.png",
+    "wyniki/wykresy/08_2_2_california_housing_y_vs_pred.png",
+    "wyniki/wykresy/09_earlystopping_strata.png",
+    "wyniki/wykresy/10_3_1_reducelronplateau_przebieg_lr.png",
+    "wyniki/wykresy/11_sgd_vs_adam_strata_walidacyjna.png",
+    "wyniki/wykresy/12_4_1_optymalizatory_val_loss.png",
+    "wyniki/wykresy/13_4_1_optymalizatory_val_accuracy.png",
+    "wyniki/wykresy/14_4_2_adam_wp_yw_learning_rate.png",
+    "wyniki/wykresy/15_bez_regularyzacji_ma_y_zbi_r_strata.png",
+    "wyniki/wykresy/16_5_2_regularyzacja_por_wnanie_5_wariant_w.png",
+    "wyniki/wykresy/17_bonus_cosinedecay_i_w_asny_callback.png"
+  ],
+  "ostrzezenia": [],
+  "status": "OK - brak zgloszonych problemow"
+}

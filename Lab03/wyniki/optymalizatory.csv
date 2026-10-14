@@ -1,0 +1,5 @@
+optymalizator,best_val_accuracy,best_epoch
+RMSprop,0.8855999708175659,10
+Adam,0.882099986076355,6
+SGD+momentum,0.8719000220298767,9
+SGD,0.8353000283241272,10
