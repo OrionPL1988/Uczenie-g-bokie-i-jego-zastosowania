@@ -1,0 +1,13 @@
+Lab04 - wyniki z lokalnego przebiegu
+Profil: full (tryb pełny tylko dla --full)
+1.1 Splot: różnica NumPy/TF = 1.192e-07
+1.2 Parametry ręcznie vs Keras: OK, suma = 21546
+2.1 MLP acc = 0.865 (235146 par.), CNN acc = 0.912 (421642 par.)
+3.1 CIFAR baseline acc = 0.707, CNN BN+aug = 0.795
+4.1 Mini-ResNet acc = 0.784, parametry = 309994
+5.1 Płytkie mapy = (32, 32, 32), głębokie = (8, 8, 128)
+6.1 Transfer zamrożony acc = 0.831; 6.2 fine-tuning acc = 0.840
+6.3 W tabeli osobno podano wielkości zbiorów train/test. Transfer używa mniejszego podzbioru testowego.
+Najczęściej mylone pary: kot i pies (40), kot i jeleń (24)
+Usprawnienie do rozważenia (NIE testowane): wejście 128x128 lub delikatniejsza augmentacja; wymaga ponownej walidacji.
+Ostrzeżenia: zad_3_1: accuracy poniżej progu 0.80; to wynik eksperymentu, nie błąd kodu; zad_4_1: accuracy poniżej progu 0.80; to wynik eksperymentu, nie błąd kodu

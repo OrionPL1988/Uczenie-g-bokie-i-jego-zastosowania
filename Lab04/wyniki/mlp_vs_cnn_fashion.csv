@@ -1,0 +1,3 @@
+model,parametry,test_accuracy,czas_s
+MLP 256-128 (L3),235146,0.8648999929428101,18.6
+CNN 32-64 + Flatten,421642,0.9121999740600586,119.2

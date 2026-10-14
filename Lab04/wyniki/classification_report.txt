@@ -1,0 +1,16 @@
+              precision    recall  f1-score   support
+
+     samolot       0.85      0.81      0.83       210
+    samochód       0.90      0.94      0.92       183
+        ptak       0.85      0.73      0.78       177
+         kot       0.79      0.69      0.74       217
+       jeleń       0.70      0.86      0.77       205
+        pies       0.88      0.71      0.79       217
+        żaba       0.85      0.94      0.89       211
+         koń       0.82      0.86      0.84       185
+      statek       0.90      0.92      0.91       197
+  ciężarówka       0.90      0.94      0.92       198
+
+    accuracy                           0.84      2000
+   macro avg       0.84      0.84      0.84      2000
+weighted avg       0.84      0.84      0.84      2000

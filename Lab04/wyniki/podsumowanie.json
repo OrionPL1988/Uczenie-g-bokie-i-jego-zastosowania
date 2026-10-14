@@ -1,0 +1,156 @@
+{
+  "tryb": "pełny",
+  "profil": "full",
+  "seed": 42,
+  "python": "3.11.9",
+  "tensorflow": "2.19.1",
+  "keras": "3.15.1",
+  "gpu": [],
+  "czas_start": "2026-10-14T16:03:09",
+  "ostrzezenia": [
+    "zad_3_1: accuracy poniżej progu 0.80; to wynik eksperymentu, nie błąd kodu",
+    "zad_4_1: accuracy poniżej progu 0.80; to wynik eksperymentu, nie błąd kodu"
+  ],
+  "status": "ZAKOŃCZONO - zweryfikuj ostrzeżenia",
+  "wykresy": [
+    "wyniki/wykresy/01_sobel.png",
+    "wyniki/wykresy/02_splot_tf.png",
+    "wyniki/wykresy/03_fashion_cnn.png",
+    "wyniki/wykresy/04_cifar_przyklady.png",
+    "wyniki/wykresy/05_cifar_augmentacje.png",
+    "wyniki/wykresy/06_cifar_baseline.png",
+    "wyniki/wykresy/07_cifar_bn_aug.png",
+    "wyniki/wykresy/08_mini_resnet.png",
+    "wyniki/wykresy/09_filtry_conv1.png",
+    "wyniki/wykresy/10_mapy_conv1.png",
+    "wyniki/wykresy/11_plytkie_glebokie.png",
+    "wyniki/wykresy/12_mobilenet_zamrozony.png",
+    "wyniki/wykresy/13_mobilenet_finetuning.png",
+    "wyniki/wykresy/14_mobilenet_macierz_pomylek.png",
+    "wyniki/wykresy/15_gradcam.png"
+  ],
+  "zad_1_1": {
+    "ksztalt": [
+      14,
+      14
+    ],
+    "max_roznica_tf": 1.1920928955078125e-07
+  },
+  "zad_1_2": {
+    "warstwy": [
+      {
+        "nazwa": "conv5_valid",
+        "ksztalt": "(None, 28, 28, 16)",
+        "parametry": 1216
+      },
+      {
+        "nazwa": "pool2",
+        "ksztalt": "(None, 14, 14, 16)",
+        "parametry": 0
+      },
+      {
+        "nazwa": "conv3_same",
+        "ksztalt": "(None, 7, 7, 32)",
+        "parametry": 4640
+      },
+      {
+        "nazwa": "flatten",
+        "ksztalt": "(None, 1568)",
+        "parametry": 0
+      },
+      {
+        "nazwa": "dense10",
+        "ksztalt": "(None, 10)",
+        "parametry": 15690
+      }
+    ],
+    "parametry_lacznie": 21546
+  },
+  "fashion_mlp": {
+    "parametry": 235146,
+    "test_acc": 0.8648999929428101,
+    "train_n": 50000,
+    "test_n": 10000
+  },
+  "zad_2_1": {
+    "mlp_acc": 0.8648999929428101,
+    "cnn_acc": 0.9121999740600586,
+    "mlp_parametry": 235146,
+    "cnn_parametry": 421642,
+    "czas_mlp_s": 18.64,
+    "czas_cnn_s": 119.16,
+    "hipoteza_cnn_lepsze": true
+  },
+  "cifar_baseline": {
+    "test_acc": 0.7071999907493591,
+    "parametry": 356810,
+    "train_n": 45000,
+    "test_n": 10000,
+    "best_val_loss_epoch": 7
+  },
+  "zad_3_1": {
+    "baseline_test_acc": 0.7071999907493591,
+    "bn_aug_test_acc": 0.7954000234603882,
+    "bn_aug_parametry": 551914,
+    "epoki": 40,
+    "best_val_acc": 0.8133999705314636,
+    "czas_s": 3250.92
+  },
+  "zad_4_1": {
+    "resnet_acc": 0.7840999960899353,
+    "resnet_parametry": 309994,
+    "cnn_bn_parametry": 551914,
+    "resnet_epoki": 40,
+    "czas_s": 4477.56
+  },
+  "zad_5_1": {
+    "plytkie": [
+      32,
+      32,
+      32
+    ],
+    "glebokie": [
+      8,
+      8,
+      128
+    ]
+  },
+  "zad_6_1": {
+    "trainable_parametry": 12810,
+    "test_acc": 0.8314999938011169,
+    "val_acc_best": 0.859000027179718,
+    "czas_s": 130.41
+  },
+  "zad_6_2": {
+    "trainable_parametry": 1539210,
+    "test_acc_po": 0.840499997138977,
+    "roznica_punktow_proc": 0.9000003337860107,
+    "czas_s": 177.05
+  },
+  "zad_6_3": {
+    "dwie_pary_pomylek": [
+      {
+        "klasy": [
+          "kot",
+          "pies"
+        ],
+        "razem": 40
+      },
+      {
+        "klasy": [
+          "kot",
+          "jeleń"
+        ],
+        "razem": 24
+      }
+    ],
+    "porownanie_test_na_roznych_podzbiorach": true,
+    "test_n_cnn": 10000,
+    "test_n_tl": 2000
+  },
+  "bonus_gradcam": {
+    "obrazy": 6,
+    "nazwa_warstwy": "ostatni_conv"
+  },
+  "czas_koniec": "2026-10-14T18:23:56"
+}
