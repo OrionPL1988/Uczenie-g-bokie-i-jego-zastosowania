@@ -1,0 +1,14 @@
+# Srodowisko i smieci po Pythonie
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+# Nie wysylamy wag i cache danych
+*.keras
+*.h5
+*.pt
+*.pth
+*.ckpt
+# FAST i balanced zostaja do testowania lokalnie
+wyniki_fast/
+wyniki_balanced/

@@ -1,0 +1,170 @@
+{
+  "profil": "full",
+  "bonus_wykonany": true,
+  "czas_eksperymentu_sekundy": 1055.19,
+  "liczba_probek_train": 60000,
+  "liczba_probek_test": 10000,
+  "epoki_glowne_limit": 20,
+  "epoki_krotkie_limit": 10,
+  "pca_progi": {
+    "80%": 44,
+    "90%": 87,
+    "95%": 154
+  },
+  "pca_mse": {
+    "2": 0.05566949397325516,
+    "10": 0.03407381474971771,
+    "50": 0.011485018767416477,
+    "150": 0.003423499409109354
+  },
+  "rekonstrukcja_d32": {
+    "mse_pca": 0.016828235238790512,
+    "mse_ae": 0.005240021739155054,
+    "mse_cae": 0.003658737288787961,
+    "parametry_ae": 1083696,
+    "parametry_cae": 278369
+  },
+  "hipoteza_ae_lepszy_d": true,
+  "mse_w_funkcji_d": [
+    {
+      "d": 2,
+      "mse_pca": 0.05566949397325516,
+      "mse_ae": 0.03894253447651863
+    },
+    {
+      "d": 4,
+      "mse_pca": 0.04790351539850235,
+      "mse_ae": 0.028492748737335205
+    },
+    {
+      "d": 8,
+      "mse_pca": 0.037441056221723557,
+      "mse_ae": 0.016681138426065445
+    },
+    {
+      "d": 16,
+      "mse_pca": 0.02686030976474285,
+      "mse_ae": 0.00994949135929346
+    },
+    {
+      "d": 32,
+      "mse_pca": 0.016828235238790512,
+      "mse_ae": 0.006294967606663704
+    },
+    {
+      "d": 64,
+      "mse_pca": 0.009046797640621662,
+      "mse_ae": 0.0049049705266952515
+    }
+  ],
+  "liniowy_ae": {
+    "mse_ae": 0.02690712921321392,
+    "mse_pca16": 0.02686030976474285,
+    "max_kat_stopnie": 3.117772340774536
+  },
+  "klasteryzacja": [
+    {
+      "przestrzeń": "AE (32)",
+      "wymiar": 32,
+      "ARI": 0.4341779705422175,
+      "NMI": 0.5300342579913692,
+      "silhouette": 0.1182166188955307
+    },
+    {
+      "przestrzeń": "piksele",
+      "wymiar": 784,
+      "ARI": 0.41425292740069103,
+      "NMI": 0.5118248030824459,
+      "silhouette": 0.06935674697160721
+    },
+    {
+      "przestrzeń": "PCA (32)",
+      "wymiar": 32,
+      "ARI": 0.40751020847484154,
+      "NMI": 0.5082453810532667,
+      "silhouette": 0.11117382347583771
+    },
+    {
+      "przestrzeń": "PCA (2)",
+      "wymiar": 2,
+      "ARI": 0.24888697745476623,
+      "NMI": 0.3597506436866024,
+      "silhouette": 0.3619900643825531
+    },
+    {
+      "przestrzeń": "AE (2)",
+      "wymiar": 2,
+      "ARI": 0.20686240794552724,
+      "NMI": 0.44981595764386434,
+      "silhouette": 0.4344516098499298
+    }
+  ],
+  "odszumianie_psnr_db": {
+    "wejscie": 9.369739532470703,
+    "ae_zwykly": 10.827715873718262,
+    "dae": 18.679182052612305
+  },
+  "anomalia": {
+    "cyfra": 9,
+    "roc_auc": 0.618632452516386,
+    "prog_95p": 0.021875539794564247,
+    "precision": 0.125,
+    "recall": 0.05649157581764123,
+    "f1": 0.07781569965870307,
+    "liczba_anomalii_test": 1009
+  },
+  "bonus_sparse": [
+    {
+      "lambda": 0.0,
+      "aktywny_latent_sredni_obraz": 0.7890625,
+      "aktywny_latent_srednio": 0.795359375,
+      "mse": 0.006927445996552706
+    },
+    {
+      "lambda": 0.0001,
+      "aktywny_latent_sredni_obraz": 0.4375,
+      "aktywny_latent_srednio": 0.47096796875,
+      "mse": 0.00799754448235035
+    }
+  ],
+  "bonus_anomalie": [
+    {
+      "cyfra_anomalia": 0,
+      "roc_auc": 0.938496877686773
+    },
+    {
+      "cyfra_anomalia": 1,
+      "roc_auc": 0.26696870085049607
+    },
+    {
+      "cyfra_anomalia": 9,
+      "roc_auc": 0.6534002342833969
+    }
+  ],
+  "wykresy": [
+    "01_przykadowe_obrazy_mnist.png",
+    "02_sredni_obraz_bar_x.png",
+    "03_widmo_pca_50_pierwszych.png",
+    "04_pca_2_skadowe_zbior_testowy.png",
+    "05_skadowe_gowne_jako_obrazy_czerwony_niebieski.png",
+    "06_rekonstrukcje_pca_dla_roznych_k.png",
+    "07_truncatedsvd_2_skadowe.png",
+    "08_pca_svd_lda_porownanie_projekcji_2d.png",
+    "09_krzywe_uczenia_ae_latent_2.png",
+    "10_pca_2d.png",
+    "11_rekonstrukcje_ae_z_latentem_2d.png",
+    "12_dekoder_ae_obrazy_z_siatki_punktow_latentnych.png",
+    "13_rozkad_z1_ae.png",
+    "14_porownanie_rekonstrukcji_pca_i_ae_d_32.png",
+    "15_bad_rekonstrukcji_ae_vs_pca.png",
+    "16_k_means_w_roznych_przestrzeniach_ari_i_nmi.png",
+    "17_tablica_kontyngencji_cyfra_vs_skupienie.png",
+    "18_t_sne_latentu_ae_32_tylko_do_wizualizacji.png",
+    "19_dane_z_szumem.png",
+    "20_odszumianie_zwyky_ae_vs_dae.png",
+    "21_rekonstrukcje_cae_vs_ae_gesty_d_32.png",
+    "22_anomalie_wykrywane_bedem_rekonstrukcji_ae.png",
+    "23_najbardziej_nietypowe_obrazy_testowe_najwiekszy_bad_rekonstrukcji.png",
+    "24_bonus_ktora_cyfra_daje_wykrywalne_anomalie.png"
+  ]
+}

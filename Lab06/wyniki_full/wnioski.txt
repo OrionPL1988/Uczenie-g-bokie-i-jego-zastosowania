@@ -1,0 +1,12 @@
+LAB06 - PROFIL FULL | BONUS: True
+Train=60000, test=10000; wyniki są zależne od profilu i liczby epok.
+PCA: k90=87, k95=154; 2 wymiary wyjaśniają 16.8% wariancji.
+AE(32) MSE=0.00524; PCA(32) MSE=0.01683; CAE(32) MSE=0.00366.
+Hipoteza AE lepszy dla wszystkich d: potwierdzona na zmierzonych d
+Liniowy AE MSE=0.02691, PCA(16) MSE=0.02686, max kąt=3.1 st.
+Najlepsze ARI: AE (32) = 0.434.
+Odszumianie: wejście=9.37, zwykły AE=10.83, DAE=18.68 dB.
+Anomalia 9: ROC-AUC=0.619, precision=0.125, recall=0.056, F1=0.078.
+Uwaga: LDA korzysta z etykiet; PCA/SVD/AE nie. Nie porównywać silhouette między wymiarami wprost.
+Próg anomalii ustalony na 95. percentylu błędów walidacji samych danych normalnych.
+Propozycja usprawnienia do sprawozdania: sprawdzić CAE zamiast AE gęstego dla detekcji anomalii na tym samym podziale; obecnie CAE porównano rekonstrukcyjnie.
