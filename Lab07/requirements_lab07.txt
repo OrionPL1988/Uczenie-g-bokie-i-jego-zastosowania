@@ -1,0 +1,10 @@
+# Glowny Lab07: Python 3.11 (64-bit), TensorFlow na CPU.
+# Bez torch/torchvision/CUDA w czesci obowiazkowej.
+tensorflow==2.20.0
+keras>=3.10,<4
+numpy>=1.26,<2.3
+pandas>=2.0,<3
+scipy>=1.11,<2
+scikit-learn>=1.4,<2
+matplotlib>=3.8,<4
+ipykernel>=6.29,<8

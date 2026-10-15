@@ -1,0 +1,14 @@
+LAB07 - wyniki z lokalnego przebiegu
+Profil: full; seed: 42
+VAE: test rec_loss=143.629, KL=6.281.
+Eksperyment beta: zgodna z kierunkiem hipotezy; pelna tabela w porownanie_beta.csv.
+GAN: 30 epok; straty nie sa samodzielna miara jakosci obrazow.
+Klasyfikator Fashion test accuracy=0.9088.
+Entropia klas GAN=0.9900, real=0.9995.
+Srednia pewnosc GAN=0.7801, real=0.9163.
+Mode collapse: wymaga oceny plansz wraz z histogramem; brak automatycznego potwierdzenia/wykluczenia.
+Najblizsi sasiedzi: podobienstwo 8 par nie rozstrzyga, czy model zapamietal trening.
+VAE walidowano na 10% puli treningowej; oficjalny test wykorzystano do oceny i ilustracji.
+Usprawnienie do przyszlego mini-projektu: zmniejszenie lr D przy tym samym budzecie GAN, min. 3 seedy; NIE wykonano tutaj.
+FID-lite: {'real_A_vs_real_B': 0.2688739341081886, 'GAN_Keras': 15.376386037276795, 'G_nietrenowany': 270.1757290453318}
+Ostrzezenia: brak technicznych; obrazy nadal wymagaja oceny

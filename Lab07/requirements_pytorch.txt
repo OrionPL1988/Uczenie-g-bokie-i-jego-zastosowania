@@ -1,0 +1,3 @@
+# Tylko do opcjonalnej sekcji 4. Dane sa juz wczytane przez Keras.
+--index-url https://download.pytorch.org/whl/cpu
+torch==2.10.0

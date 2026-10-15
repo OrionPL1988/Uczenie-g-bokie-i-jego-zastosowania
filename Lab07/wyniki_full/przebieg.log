@@ -1,0 +1,377 @@
+
+--- Komorka 3 ---
+TensorFlow: 2.20.0 | Keras: 3.15.1 | backend: tensorflow
+
+--- Komorka 4 ---
+Profil: full | parametry: {'n': 60000, 'test': 10000, 'vae': 30, 'krotko': 10, 'gan': 30, 'torch': 10, 'latent': 128, 'batch': 128, 'clf': 5, 'gen': 5000} | GPU TF: brak, CPU
+
+--- Komorka 5 ---
+MNIST train/val/test: 54000 6000 10000
+Fashion train/test: 60000 10000
+
+--- Komorka 6 ---
+
+--- Komorka 10 ---
+Sampling - srednia: [3.007594 2.997074] | std: [0.501583  0.4990576]
+
+--- Komorka 12 ---
+Model: "vae_enkoder"
+┌───────────────────────────────┬───────────────────────────┬─────────────────┬────────────────────────────┐
+│ Layer (type)                  │ Output Shape              │         Param # │ Connected to               │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ input_layer (InputLayer)      │ (None, 28, 28, 1)         │               0 │ -                          │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ conv2d (Conv2D)               │ (None, 14, 14, 32)        │             320 │ input_layer[0][0]          │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ conv2d_1 (Conv2D)             │ (None, 7, 7, 64)          │          18,496 │ conv2d[0][0]               │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ flatten (Flatten)             │ (None, 3136)              │               0 │ conv2d_1[0][0]             │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dense (Dense)                 │ (None, 16)                │          50,192 │ flatten[0][0]              │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ z_mean (Dense)                │ (None, 2)                 │              34 │ dense[0][0]                │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ z_log_var (Dense)             │ (None, 2)                 │              34 │ dense[0][0]                │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ z (Sampling)                  │ (None, 2)                 │               0 │ z_mean[0][0],              │
+│                               │                           │                 │ z_log_var[0][0]            │
+└───────────────────────────────┴───────────────────────────┴─────────────────┴────────────────────────────┘
+ Total params: 69,076 (269.83 KB)
+ Trainable params: 69,076 (269.83 KB)
+ Non-trainable params: 0 (0.00 B)
+
+--- Komorka 15 ---
+BCE dla p=0.5: 543.4276123046875 | KL N(0,I): 0
+
+--- Komorka 16 ---
+Epoch 1/30
+422/422 - 21s - 49ms/step - kl_loss: 3.1575 - loss: 214.6218 - rec_loss: 211.4644 - val_kl_loss: 4.5204 - val_loss: 178.7628 - val_rec_loss: 174.2424
+Epoch 2/30
+422/422 - 18s - 43ms/step - kl_loss: 4.7569 - loss: 169.2450 - rec_loss: 164.4881 - val_kl_loss: 5.0042 - val_loss: 165.1665 - val_rec_loss: 160.1623
+Epoch 3/30
+422/422 - 18s - 42ms/step - kl_loss: 5.1540 - loss: 162.5007 - rec_loss: 157.3467 - val_kl_loss: 5.2508 - val_loss: 161.4918 - val_rec_loss: 156.2409
+Epoch 4/30
+422/422 - 18s - 42ms/step - kl_loss: 5.4503 - loss: 159.3661 - rec_loss: 153.9158 - val_kl_loss: 5.4288 - val_loss: 158.9188 - val_rec_loss: 153.4901
+Epoch 5/30
+422/422 - 18s - 43ms/step - kl_loss: 5.5918 - loss: 157.4948 - rec_loss: 151.9030 - val_kl_loss: 5.7542 - val_loss: 157.7665 - val_rec_loss: 152.0123
+Epoch 6/30
+422/422 - 18s - 42ms/step - kl_loss: 5.7122 - loss: 156.2794 - rec_loss: 150.5672 - val_kl_loss: 5.7344 - val_loss: 156.6008 - val_rec_loss: 150.8664
+Epoch 7/30
+422/422 - 18s - 42ms/step - kl_loss: 5.7583 - loss: 155.3823 - rec_loss: 149.6241 - val_kl_loss: 5.8495 - val_loss: 155.8667 - val_rec_loss: 150.0172
+Epoch 8/30
+422/422 - 18s - 43ms/step - kl_loss: 5.8386 - loss: 154.5276 - rec_loss: 148.6891 - val_kl_loss: 5.7843 - val_loss: 155.2369 - val_rec_loss: 149.4526
+Epoch 9/30
+422/422 - 19s - 44ms/step - kl_loss: 5.8715 - loss: 153.9890 - rec_loss: 148.1175 - val_kl_loss: 5.8485 - val_loss: 154.8710 - val_rec_loss: 149.0224
+Epoch 10/30
+422/422 - 18s - 42ms/step - kl_loss: 5.9272 - loss: 153.3251 - rec_loss: 147.3981 - val_kl_loss: 5.9950 - val_loss: 154.2640 - val_rec_loss: 148.2690
+Epoch 11/30
+422/422 - 18s - 43ms/step - kl_loss: 5.9564 - loss: 152.9290 - rec_loss: 146.9726 - val_kl_loss: 5.8634 - val_loss: 154.4094 - val_rec_loss: 148.5460
+Epoch 12/30
+422/422 - 18s - 42ms/step - kl_loss: 5.9945 - loss: 152.4833 - rec_loss: 146.4889 - val_kl_loss: 6.0606 - val_loss: 154.1443 - val_rec_loss: 148.0838
+Epoch 13/30
+422/422 - 18s - 43ms/step - kl_loss: 6.0176 - loss: 151.9874 - rec_loss: 145.9698 - val_kl_loss: 6.0651 - val_loss: 153.5551 - val_rec_loss: 147.4899
+Epoch 14/30
+422/422 - 18s - 42ms/step - kl_loss: 6.0256 - loss: 151.8868 - rec_loss: 145.8613 - val_kl_loss: 6.0442 - val_loss: 153.7211 - val_rec_loss: 147.6769
+Epoch 15/30
+422/422 - 18s - 42ms/step - kl_loss: 6.0760 - loss: 151.4579 - rec_loss: 145.3820 - val_kl_loss: 5.9108 - val_loss: 153.3720 - val_rec_loss: 147.4613
+Epoch 16/30
+422/422 - 18s - 43ms/step - kl_loss: 6.1114 - loss: 151.1491 - rec_loss: 145.0376 - val_kl_loss: 6.0403 - val_loss: 152.6085 - val_rec_loss: 146.5682
+Epoch 17/30
+422/422 - 18s - 42ms/step - kl_loss: 6.1123 - loss: 150.8698 - rec_loss: 144.7576 - val_kl_loss: 6.1908 - val_loss: 152.6335 - val_rec_loss: 146.4427
+Epoch 18/30
+422/422 - 18s - 42ms/step - kl_loss: 6.1569 - loss: 150.6108 - rec_loss: 144.4539 - val_kl_loss: 6.0544 - val_loss: 152.6477 - val_rec_loss: 146.5933
+Epoch 19/30
+422/422 - 18s - 43ms/step - kl_loss: 6.1645 - loss: 150.4155 - rec_loss: 144.2510 - val_kl_loss: 6.0213 - val_loss: 152.4935 - val_rec_loss: 146.4722
+Epoch 20/30
+422/422 - 19s - 44ms/step - kl_loss: 6.1793 - loss: 150.1777 - rec_loss: 143.9983 - val_kl_loss: 6.2133 - val_loss: 152.3129 - val_rec_loss: 146.0996
+Epoch 21/30
+422/422 - 18s - 42ms/step - kl_loss: 6.2161 - loss: 149.9953 - rec_loss: 143.7792 - val_kl_loss: 6.2157 - val_loss: 153.6788 - val_rec_loss: 147.4631
+Epoch 22/30
+422/422 - 18s - 42ms/step - kl_loss: 6.2326 - loss: 149.7791 - rec_loss: 143.5465 - val_kl_loss: 6.1426 - val_loss: 152.1626 - val_rec_loss: 146.0199
+Epoch 23/30
+422/422 - 18s - 42ms/step - kl_loss: 6.2432 - loss: 149.5772 - rec_loss: 143.3339 - val_kl_loss: 6.2483 - val_loss: 151.7134 - val_rec_loss: 145.4651
+Epoch 24/30
+422/422 - 18s - 43ms/step - kl_loss: 6.2627 - loss: 149.4187 - rec_loss: 143.1560 - val_kl_loss: 6.2965 - val_loss: 152.6515 - val_rec_loss: 146.3549
+Epoch 25/30
+422/422 - 18s - 42ms/step - kl_loss: 6.2856 - loss: 149.2257 - rec_loss: 142.9401 - val_kl_loss: 6.2559 - val_loss: 152.2676 - val_rec_loss: 146.0117
+Epoch 26/30
+422/422 - 18s - 42ms/step - kl_loss: 6.2868 - loss: 149.1044 - rec_loss: 142.8177 - val_kl_loss: 6.2945 - val_loss: 152.0217 - val_rec_loss: 145.7271
+Epoch 27/30
+422/422 - 19s - 44ms/step - kl_loss: 6.3099 - loss: 148.9919 - rec_loss: 142.6820 - val_kl_loss: 6.2918 - val_loss: 152.6485 - val_rec_loss: 146.3567
+Epoch 28/30
+422/422 - 18s - 42ms/step - kl_loss: 6.3195 - loss: 148.8390 - rec_loss: 142.5195 - val_kl_loss: 6.2996 - val_loss: 152.1339 - val_rec_loss: 145.8343
+Epoch 29/30
+422/422 - 18s - 43ms/step - kl_loss: 6.3225 - loss: 148.6298 - rec_loss: 142.3074 - val_kl_loss: 6.2554 - val_loss: 151.4581 - val_rec_loss: 145.2028
+Epoch 30/30
+422/422 - 18s - 42ms/step - kl_loss: 6.3362 - loss: 148.5370 - rec_loss: 142.2007 - val_kl_loss: 6.2959 - val_loss: 151.4268 - val_rec_loss: 145.1309
+
+--- Komorka 17 ---
+
+--- Komorka 19 ---
+Latent VAE: {'srednia_mu': array([ 0.2531087 , -0.10974073], dtype=float32), 'std_mu': array([1.1202399, 0.9825303], dtype=float32), 'srednia_sigma': array([0.04552231, 0.05962112], dtype=float32)}
+
+--- Komorka 20 ---
+Srednia roznica dwoch losowan: 0.011580592021346092
+
+--- Komorka 22 ---
+
+--- Komorka 24 ---
+
+--- Komorka 26 ---
+Epoch 1/10
+422/422 - 21s - 50ms/step - kl_loss: 12.7945 - loss: 212.2969 - rec_loss: 211.0174 - val_kl_loss: 8.4238 - val_loss: 185.7850 - val_rec_loss: 184.9426
+Epoch 2/10
+422/422 - 18s - 43ms/step - kl_loss: 11.1399 - loss: 167.9614 - rec_loss: 166.8474 - val_kl_loss: 10.2488 - val_loss: 162.5984 - val_rec_loss: 161.5735
+Epoch 3/10
+422/422 - 18s - 43ms/step - kl_loss: 9.9862 - loss: 159.5479 - rec_loss: 158.5493 - val_kl_loss: 9.6743 - val_loss: 157.7724 - val_rec_loss: 156.8050
+Epoch 4/10
+422/422 - 19s - 44ms/step - kl_loss: 9.9598 - loss: 155.5319 - rec_loss: 154.5360 - val_kl_loss: 10.0761 - val_loss: 154.7732 - val_rec_loss: 153.7656
+Epoch 5/10
+422/422 - 18s - 42ms/step - kl_loss: 10.0071 - loss: 153.1350 - rec_loss: 152.1343 - val_kl_loss: 9.8580 - val_loss: 152.7149 - val_rec_loss: 151.7291
+Epoch 6/10
+422/422 - 18s - 42ms/step - kl_loss: 10.1422 - loss: 151.4537 - rec_loss: 150.4395 - val_kl_loss: 10.0203 - val_loss: 151.3801 - val_rec_loss: 150.3781
+Epoch 7/10
+422/422 - 20s - 46ms/step - kl_loss: 10.1439 - loss: 150.2006 - rec_loss: 149.1862 - val_kl_loss: 10.1887 - val_loss: 150.6900 - val_rec_loss: 149.6712
+Epoch 8/10
+422/422 - 21s - 49ms/step - kl_loss: 10.1525 - loss: 149.2755 - rec_loss: 148.2604 - val_kl_loss: 10.2891 - val_loss: 149.6630 - val_rec_loss: 148.6341
+Epoch 9/10
+422/422 - 20s - 48ms/step - kl_loss: 10.2052 - loss: 148.4684 - rec_loss: 147.4479 - val_kl_loss: 9.7540 - val_loss: 149.1461 - val_rec_loss: 148.1708
+Epoch 10/10
+422/422 - 22s - 51ms/step - kl_loss: 10.2750 - loss: 147.7216 - rec_loss: 146.6941 - val_kl_loss: 10.4786 - val_loss: 148.6192 - val_rec_loss: 147.5713
+Epoch 1/10
+422/422 - 23s - 55ms/step - kl_loss: 3.1575 - loss: 214.6218 - rec_loss: 211.4644 - val_kl_loss: 4.5204 - val_loss: 178.7628 - val_rec_loss: 174.2424
+Epoch 2/10
+422/422 - 20s - 48ms/step - kl_loss: 4.7569 - loss: 169.2450 - rec_loss: 164.4881 - val_kl_loss: 5.0042 - val_loss: 165.1665 - val_rec_loss: 160.1623
+Epoch 3/10
+422/422 - 20s - 48ms/step - kl_loss: 5.1540 - loss: 162.5007 - rec_loss: 157.3467 - val_kl_loss: 5.2508 - val_loss: 161.4918 - val_rec_loss: 156.2409
+Epoch 4/10
+422/422 - 21s - 51ms/step - kl_loss: 5.4503 - loss: 159.3661 - rec_loss: 153.9158 - val_kl_loss: 5.4288 - val_loss: 158.9188 - val_rec_loss: 153.4901
+Epoch 5/10
+422/422 - 21s - 51ms/step - kl_loss: 5.5918 - loss: 157.4948 - rec_loss: 151.9030 - val_kl_loss: 5.7542 - val_loss: 157.7665 - val_rec_loss: 152.0123
+Epoch 6/10
+422/422 - 21s - 51ms/step - kl_loss: 5.7122 - loss: 156.2794 - rec_loss: 150.5672 - val_kl_loss: 5.7344 - val_loss: 156.6008 - val_rec_loss: 150.8664
+Epoch 7/10
+422/422 - 24s - 56ms/step - kl_loss: 5.7583 - loss: 155.3823 - rec_loss: 149.6241 - val_kl_loss: 5.8495 - val_loss: 155.8667 - val_rec_loss: 150.0172
+Epoch 8/10
+422/422 - 22s - 52ms/step - kl_loss: 5.8386 - loss: 154.5276 - rec_loss: 148.6891 - val_kl_loss: 5.7843 - val_loss: 155.2369 - val_rec_loss: 149.4526
+Epoch 9/10
+422/422 - 21s - 50ms/step - kl_loss: 5.8715 - loss: 153.9890 - rec_loss: 148.1175 - val_kl_loss: 5.8485 - val_loss: 154.8710 - val_rec_loss: 149.0224
+Epoch 10/10
+422/422 - 21s - 51ms/step - kl_loss: 5.9272 - loss: 153.3251 - rec_loss: 147.3981 - val_kl_loss: 5.9950 - val_loss: 154.2640 - val_rec_loss: 148.2690
+Epoch 1/10
+422/422 - 24s - 57ms/step - kl_loss: 0.5536 - loss: 224.0175 - rec_loss: 221.8032 - val_kl_loss: 0.8748 - val_loss: 202.1357 - val_rec_loss: 198.6367
+Epoch 2/10
+422/422 - 21s - 50ms/step - kl_loss: 1.1926 - loss: 199.0121 - rec_loss: 194.2419 - val_kl_loss: 1.3975 - val_loss: 196.1764 - val_rec_loss: 190.5864
+Epoch 3/10
+422/422 - 21s - 51ms/step - kl_loss: 2.2759 - loss: 189.1489 - rec_loss: 180.0453 - val_kl_loss: 3.0270 - val_loss: 184.1005 - val_rec_loss: 171.9927
+Epoch 4/10
+422/422 - 20s - 48ms/step - kl_loss: 3.1980 - loss: 180.6826 - rec_loss: 167.8905 - val_kl_loss: 3.3454 - val_loss: 179.2984 - val_rec_loss: 165.9168
+Epoch 5/10
+422/422 - 20s - 48ms/step - kl_loss: 3.4398 - loss: 177.3741 - rec_loss: 163.6150 - val_kl_loss: 3.5482 - val_loss: 176.8819 - val_rec_loss: 162.6892
+Epoch 6/10
+422/422 - 21s - 50ms/step - kl_loss: 3.6084 - loss: 175.3982 - rec_loss: 160.9643 - val_kl_loss: 3.6197 - val_loss: 175.5932 - val_rec_loss: 161.1144
+Epoch 7/10
+422/422 - 21s - 49ms/step - kl_loss: 3.7029 - loss: 174.0452 - rec_loss: 159.2334 - val_kl_loss: 3.8452 - val_loss: 175.2226 - val_rec_loss: 159.8418
+Epoch 8/10
+422/422 - 20s - 48ms/step - kl_loss: 3.7883 - loss: 173.0993 - rec_loss: 157.9463 - val_kl_loss: 3.7037 - val_loss: 173.5609 - val_rec_loss: 158.7462
+Epoch 9/10
+422/422 - 21s - 50ms/step - kl_loss: 3.8358 - loss: 172.2596 - rec_loss: 156.9164 - val_kl_loss: 3.7952 - val_loss: 172.9533 - val_rec_loss: 157.7725
+Epoch 10/10
+422/422 - 21s - 49ms/step - kl_loss: 3.8707 - loss: 171.6087 - rec_loss: 156.1258 - val_kl_loss: 3.8050 - val_loss: 172.6780 - val_rec_loss: 157.4578
+ beta   rec_loss   kl_loss  val_rec_loss  val_kl_loss  std_mu_z1_test  std_mu_z2_test  mean_sigma_test  epoki
+  0.1 146.694077 10.275041    147.571320    10.478574        1.762032        1.247266         0.018378     10
+  1.0 147.398087  5.927158    148.268997     5.995002        1.111417        0.982083         0.058323     10
+  4.0 156.125809  3.870728    157.457825     3.805048        0.773299        1.010496         0.152047     10
+Beta: zgodna z kierunkiem hipotezy
+
+--- Komorka 28 ---
+Model: "dyskryminator"
+┌──────────────────────────────────────┬─────────────────────────────┬─────────────────┐
+│ Layer (type)                         │ Output Shape                │         Param # │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ input_layer_8 (InputLayer)           │ (None, 28, 28, 1)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_12 (Conv2D)                   │ (None, 14, 14, 64)          │           1,088 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ leaky_re_lu (LeakyReLU)              │ (None, 14, 14, 64)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_13 (Conv2D)                   │ (None, 7, 7, 128)           │         131,200 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ leaky_re_lu_1 (LeakyReLU)            │ (None, 7, 7, 128)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ flatten_4 (Flatten)                  │ (None, 6272)                │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 6272)                │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_8 (Dense)                      │ (None, 1)                   │           6,273 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 138,561 (541.25 KB)
+ Trainable params: 138,561 (541.25 KB)
+ Non-trainable params: 0 (0.00 B)
+
+--- Komorka 30 ---
+Model: "generator"
+┌──────────────────────────────────────┬─────────────────────────────┬─────────────────┐
+│ Layer (type)                         │ Output Shape                │         Param # │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ input_layer_9 (InputLayer)           │ (None, 128)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_9 (Dense)                      │ (None, 6272)                │         802,816 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization                  │ (None, 6272)                │          25,088 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ leaky_re_lu_2 (LeakyReLU)            │ (None, 6272)                │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ reshape_4 (Reshape)                  │ (None, 7, 7, 128)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_transpose_8 (Conv2DTranspose) │ (None, 14, 14, 64)          │         131,072 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_1                │ (None, 14, 14, 64)          │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ leaky_re_lu_3 (LeakyReLU)            │ (None, 14, 14, 64)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2d_transpose_9 (Conv2DTranspose) │ (None, 28, 28, 1)           │           1,025 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 960,257 (3.66 MB)
+ Trainable params: 947,585 (3.61 MB)
+ Non-trainable params: 12,672 (49.50 KB)
+
+--- Komorka 32 ---
+
+--- Komorka 34 ---
+Epoch 1/30
+468/468 - 87s - 186ms/step - D_fake: 0.4216 - D_real: 0.5106 - d_loss: 1.2634 - g_loss: 0.9169
+Epoch 2/30
+468/468 - 79s - 170ms/step - D_fake: 0.3524 - D_real: 0.5466 - d_loss: 1.1205 - g_loss: 1.1268
+Epoch 3/30
+468/468 - 81s - 173ms/step - D_fake: 0.3350 - D_real: 0.5651 - d_loss: 1.1013 - g_loss: 1.1729
+Epoch 4/30
+468/468 - 68s - 145ms/step - D_fake: 0.3594 - D_real: 0.5402 - d_loss: 1.1661 - g_loss: 1.0873
+Epoch 5/30
+468/468 - 69s - 147ms/step - D_fake: 0.3759 - D_real: 0.5239 - d_loss: 1.2043 - g_loss: 1.0436
+Epoch 6/30
+468/468 - 68s - 146ms/step - D_fake: 0.3855 - D_real: 0.5144 - d_loss: 1.2285 - g_loss: 1.0109
+Epoch 7/30
+468/468 - 68s - 145ms/step - D_fake: 0.3910 - D_real: 0.5089 - d_loss: 1.2418 - g_loss: 0.9935
+Epoch 8/30
+468/468 - 68s - 145ms/step - D_fake: 0.3941 - D_real: 0.5058 - d_loss: 1.2492 - g_loss: 0.9825
+Epoch 9/30
+468/468 - 70s - 149ms/step - D_fake: 0.3959 - D_real: 0.5041 - d_loss: 1.2534 - g_loss: 0.9818
+Epoch 10/30
+468/468 - 69s - 147ms/step - D_fake: 0.3958 - D_real: 0.5043 - d_loss: 1.2522 - g_loss: 0.9784
+Epoch 11/30
+468/468 - 70s - 149ms/step - D_fake: 0.3953 - D_real: 0.5045 - d_loss: 1.2519 - g_loss: 0.9777
+Epoch 12/30
+468/468 - 68s - 146ms/step - D_fake: 0.3955 - D_real: 0.5046 - d_loss: 1.2518 - g_loss: 0.9799
+Epoch 13/30
+468/468 - 68s - 146ms/step - D_fake: 0.3943 - D_real: 0.5056 - d_loss: 1.2500 - g_loss: 0.9798
+Epoch 14/30
+468/468 - 68s - 145ms/step - D_fake: 0.3940 - D_real: 0.5059 - d_loss: 1.2501 - g_loss: 0.9842
+Epoch 15/30
+468/468 - 68s - 144ms/step - D_fake: 0.3925 - D_real: 0.5074 - d_loss: 1.2465 - g_loss: 0.9867
+Epoch 16/30
+468/468 - 71s - 152ms/step - D_fake: 0.3922 - D_real: 0.5076 - d_loss: 1.2475 - g_loss: 0.9911
+Epoch 17/30
+468/468 - 68s - 145ms/step - D_fake: 0.3915 - D_real: 0.5081 - d_loss: 1.2463 - g_loss: 0.9909
+Epoch 18/30
+468/468 - 68s - 146ms/step - D_fake: 0.3910 - D_real: 0.5088 - d_loss: 1.2452 - g_loss: 0.9946
+Epoch 19/30
+468/468 - 70s - 149ms/step - D_fake: 0.3898 - D_real: 0.5096 - d_loss: 1.2439 - g_loss: 0.9972
+Epoch 20/30
+468/468 - 68s - 146ms/step - D_fake: 0.3903 - D_real: 0.5095 - d_loss: 1.2458 - g_loss: 0.9999
+Epoch 21/30
+468/468 - 70s - 150ms/step - D_fake: 0.3893 - D_real: 0.5105 - d_loss: 1.2420 - g_loss: 0.9996
+Epoch 22/30
+468/468 - 68s - 146ms/step - D_fake: 0.3889 - D_real: 0.5106 - d_loss: 1.2433 - g_loss: 1.0018
+Epoch 23/30
+468/468 - 68s - 146ms/step - D_fake: 0.3897 - D_real: 0.5100 - d_loss: 1.2457 - g_loss: 1.0028
+Epoch 24/30
+468/468 - 68s - 144ms/step - D_fake: 0.3900 - D_real: 0.5098 - d_loss: 1.2465 - g_loss: 1.0047
+Epoch 25/30
+468/468 - 68s - 145ms/step - D_fake: 0.3883 - D_real: 0.5112 - d_loss: 1.2424 - g_loss: 1.0033
+Epoch 26/30
+468/468 - 69s - 148ms/step - D_fake: 0.3879 - D_real: 0.5115 - d_loss: 1.2417 - g_loss: 1.0094
+Epoch 27/30
+468/468 - 90s - 193ms/step - D_fake: 0.3882 - D_real: 0.5115 - d_loss: 1.2436 - g_loss: 1.0106
+Epoch 28/30
+468/468 - 101s - 216ms/step - D_fake: 0.3874 - D_real: 0.5123 - d_loss: 1.2414 - g_loss: 1.0083
+Epoch 29/30
+468/468 - 77s - 165ms/step - D_fake: 0.3866 - D_real: 0.5131 - d_loss: 1.2393 - g_loss: 1.0138
+Epoch 30/30
+468/468 - 68s - 146ms/step - D_fake: 0.3869 - D_real: 0.5128 - d_loss: 1.2412 - g_loss: 1.0132
+
+--- Komorka 35 ---
+
+--- Komorka 36 ---
+
+--- Komorka 38 ---
+
+--- Komorka 40 ---
+Epoch 1/5
+469/469 - 12s - 26ms/step - accuracy: 0.7948 - loss: 0.5780
+Epoch 2/5
+469/469 - 11s - 23ms/step - accuracy: 0.8719 - loss: 0.3616
+Epoch 3/5
+469/469 - 11s - 23ms/step - accuracy: 0.8906 - loss: 0.3092
+Epoch 4/5
+469/469 - 11s - 24ms/step - accuracy: 0.9006 - loss: 0.2776
+Epoch 5/5
+469/469 - 11s - 23ms/step - accuracy: 0.9100 - loss: 0.2488
+Klasyfikator - test: {'accuracy': 0.9088000059127808, 'loss': 0.2489895075559616, 'czas_s': 56.99}
+
+--- Komorka 41 ---
+   klasa  liczba_gen  udzial_gen  liczba_real_pred  udzial_real_pred
+ T-shirt         576      0.1152              1018            0.1018
+ spodnie         406      0.0812               991            0.0991
+  sweter         359      0.0718               900            0.0900
+sukienka         599      0.1198              1052            0.1052
+ plaszcz         560      0.1120              1066            0.1066
+  sandal         345      0.0690               996            0.0996
+ koszula         694      0.1388               980            0.0980
+ sneaker         529      0.1058              1042            0.1042
+   torba         435      0.0870               986            0.0986
+   botek         497      0.0994               969            0.0969
+Entropia GAN/real: 0.9899702340086801 0.9995439376913728 | pewnosc: 0.7800750732421875 0.9163368940353394
+
+--- Komorka 43 ---
+Odleglosci NN: [3.30623913 5.13097954 3.92880416 5.3483963  3.37164354 5.94049358
+ 5.05594158 3.89169121]
+
+--- Komorka 46 ---
+Sekcja 4 opcjonalna: pomijam. Do wlaczenia sluzy --pytorch.
+
+--- Komorka 48 ---
+
+--- Komorka 49 ---
+
+--- Komorka 53 ---
+{
+  "python": "3.11.9",
+  "tensorflow": "2.20.0",
+  "keras": "3.15.1",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "scipy": "1.17.1",
+  "scikit-learn": "1.9.1",
+  "matplotlib": "3.11.2",
+  "backend_keras": "tensorflow"
+}
+Seed: 42 | profil: full | watki CPU: 4
+
+--- Komorka 54 ---
+W tym przebiegu jest jedno ziarno. Nie wpisujemy fikcyjnych powtorzen do raportu.
+
+--- Komorka 59 ---
+      porownanie         FD  n_na_zbior
+real_A_vs_real_B   0.268874        5000
+       GAN_Keras  15.376386        5000
+  G_nietrenowany 270.175729        5000
+
+--- Komorka 60 ---
+
+KONIEC: UKONCZONO_DO_OCENY_WYNIKOW
+Wyniki: C:\Users\Krzysztof\Desktop\WSB II rok mgr\Lab07\wyniki_full
+Wykresy: 22
+Notebook z wynikami: C:\Users\Krzysztof\Desktop\WSB II rok mgr\Lab07\wyniki_full\Lab07_z_wynikami.ipynb

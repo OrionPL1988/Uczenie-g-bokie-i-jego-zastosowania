@@ -1,0 +1,92 @@
+LAB07 - lokalnie w VS Code / PowerShell, bez Colaba i BAT
+
+1. Rozpakuj folder Lab07 do:
+   C:\Users\Krzysztof\Desktop\WSB II rok mgr\Lab07
+   Pliki lab07_rozwiazanie.py i requirements_lab07.txt maja lezec bezposrednio tutaj,
+   a nie w dodatkowym Lab07\Lab07.
+
+2. PowerShell (zwykle konto, nie trzeba uruchamiac jako administrator):
+   cd "C:\Users\Krzysztof\Desktop\WSB II rok mgr\Lab07"
+   py -3.11 --version
+   py -3.11 -m venv .venv
+   .\.venv\Scripts\python.exe -m pip install --upgrade pip
+   .\.venv\Scripts\python.exe -m pip install -r requirements_lab07.txt
+   .\.venv\Scripts\python.exe -m pip check
+
+   Nie uruchamiaj kolejnej komendy, jesli poprzednia zakonczyla sie bledem.
+   Nie trzeba aktywowac .venv ani zmieniac ExecutionPolicy PowerShella.
+   Gdy py -3.11 nie dziala, sprawdz py -0p; nie uzywaj losowo innej wersji.
+
+3. Kontrola importow i szybki przebieg (takze FID-lite):
+   .\.venv\Scripts\python.exe -c "import tensorflow as tf, keras; print(tf.__version__, keras.__version__)"
+   .\.venv\Scripts\python.exe .\lab07_rozwiazanie.py --fast --bonus
+
+4. Po kontroli FAST, pelny eksperyment:
+   .\.venv\Scripts\python.exe .\lab07_rozwiazanie.py --full --bonus
+
+   Opcjonalnie posredni profil:
+   .\.venv\Scripts\python.exe .\lab07_rozwiazanie.py --balanced --bonus
+
+   FAST: 2000 obrazow treningowych kazdego zbioru, test 2000,
+         VAE 2 epoki, kazde beta 1, GAN 2, klasyfikator 1.
+   BALANCED: pula 12000, test 2500, VAE 8, beta 4, GAN 8, klasyfikator 3.
+   FULL: pula 60000, test 10000, VAE 30, beta 10, GAN 30, klasyfikator 5.
+   VAE: z puli treningowej wydzielono 10% walidacji (FULL: 54000 + 6000).
+   GAN: korzysta z calej puli treningowej profilu; nie uzywa etykiet.
+   Seedy: domyslnie 42. Opcja --seed N pozwala zmienic ziarno.
+   Watki CPU: domyslnie 4; opcja --threads N. Nie jest to wynik strojenia wydajnosci.
+
+5. Opcjonalny GAN w PyTorch (sekcja 4):
+   .\.venv\Scripts\python.exe -m pip install -r requirements_pytorch.txt
+   .\.venv\Scripts\python.exe .\lab07_rozwiazanie.py --fast --bonus --pytorch --overwrite
+
+   Pelna wersja razem z PyTorch:
+   .\.venv\Scripts\python.exe .\lab07_rozwiazanie.py --full --bonus --pytorch
+
+   O wybraniu PyTorch zdecyduj przed FULL; ponowne uruchomienie powtarza tez glowny lab.
+   --bonus oznacza FID-lite, a nie dodatkowy trening PyTorch.
+   PyTorch uruchamiamy na CPU, bez konfigurowania CUDA dla Quadro.
+   torchvision nie jest potrzebne: ta sama tablica Fashion-MNIST trafia do TensorDataset.
+
+6. Wyniki:
+   wyniki_fast / wyniki_balanced / wyniki_full
+     podsumowanie.json          - metryki, profil, wersje, status, ostrzezenia
+     wnioski.txt                - wnioski liczbowe z tego uruchomienia
+     historia_*.csv             - pelne przebiegi epok
+     porownanie_beta.csv        - trzy niezalezne VAE, ten sam budzet
+     roznorodnosc_klas.csv       - twarde klasy argmax i udzialy
+     fid_lite.csv               - gdy wybrano --bonus
+     Lab07_z_wynikami.ipynb     - wyjscia wykonanych komorek skryptu
+     wykresy/                  - podstawowo 21 PNG; z FID-lite 22; + PyTorch 24
+     modele/                   - pomocnicze lokalne modele i ostatnie wagi
+     przebieg.log              - log konsoli
+
+   Po FAST podeslij podsumowanie.json. Slabe obrazy po 1-2 epokach nie sa zaliczeniem
+   ani automatyczna awaria. Po FULL potrzebne beda takze plansze GAN i latent VAE.
+   Samo niskie loss, wysoka entropia albo niskie FID-lite nie rozstrzyga jakosci obrazow.
+
+7. Ochrona wynikow:
+   Kolejny przebieg tego samego profilu zatrzyma sie, jezeli istnieje podsumowanie.json.
+   Najpierw zrob kopie dobrego przebiegu, potem ewentualnie dodaj --overwrite.
+   Nie ma automatycznego resume. Checkpointy przechowuja pomocnicze wagi modeli;
+   wznowienie nie odtworzy tutaj calego stanu losowania i optymalizacji.
+   Przy przerwaniu pozostaja juz zapisane JSON/CSV/obrazy oraz czesciowy notebook.
+
+8. Notebook w VS Code:
+   Wybierz kernel .venv\Scripts\python.exe. Na gorze ustaw PROFIL, BONUS, PYTORCH.
+   Uruchamiaj od poczatku. Przy ponownym przebiegu swiadomie ustaw NADPISZ=True.
+   Po wykonaniu zapisz Ctrl+S. Notebook z wynikami ze skryptu mozna przegladac bez treningu.
+   W eksportowanym notebooku opcje profilu sa takie jak podczas rzeczywistego wykonania.
+
+9. GitHub - dopiero po kontroli FULL:
+   Do istniejacego repozytorium dodaj Lab07 obok Lab01-Lab06.
+   Kopiuj kod, .ipynb, wymagania, pytania kontrolne oraz wyniki_full (JSON/CSV/TXT/PNG
+   i Lab07_z_wynikami.ipynb). Nie kopiuj .venv, modeli, archiwow ani prob FAST/BALANCED.
+   .gitignore dodatkowo wyklucza te pliki. Nie uzywaj git init wewnatrz Lab07.
+   Nie ma README ani BAT-a.
+
+10. Finalne sprawozdanie:
+   Instrukcja prowadzacej jest w WYMAGANIA_SPRAWOZDANIA_KONCOWEGO.txt i w notebooku.
+   To zalecane 10-15 stron PDF z wynikami Lab03-Lab07, wlasnym mini-projektem,
+   bibliografia i informacja o faktycznym zakresie uzycia AI. Ten lab nie jest
+   automatycznie calym mini-projektem; dodatkowy eksperyment trzeba zaplanowac osobno.

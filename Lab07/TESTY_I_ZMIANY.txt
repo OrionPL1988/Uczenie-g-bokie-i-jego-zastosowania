@@ -1,0 +1,48 @@
+LAB07 - zakres przygotowania i sprawdzenia paczki
+
+Co zostalo zrealizowane:
+- Wszystkie 8 zadan glownych (2.1-2.4, 3.1-3.4).
+- Opcjonalne 4.1 (DCGAN PyTorch), uruchamiane flaga --pytorch.
+- Opcjonalne FID-lite, uruchamiane flaga --bonus.
+- Odpowiedzi na 8 pytan kontrolnych i zachowana instrukcja sprawozdania z notebooka.
+- Eksport historii, metryk, wykresow oraz notebooka z zarejestrowanymi wyjsciami.
+
+Sprawdzenie w srodowisku przygotowania paczki:
+- Python 3.13.5, Keras 3.13.2, backend torch 2.10.0+cpu (TYLKO do izolowanych testow).
+- Skladnia calego .py i kazdej komorki .ipynb; schemat nbformat 4.
+- Sampling: srednie 2.9987 i 3.0016, std 0.5040 i 0.5020; oczekiwane 3.0 / 0.5.
+- Gradient przez mu i log_var; niezalejne kolejne losowania.
+- Ksztalty VAE, generatora DCGAN i dyskryminatora w Keras.
+- Wzor i skala straty VAE: stale p=0.5 daje 543.4275 = 784*ln(2).
+- Propagacja gradientow przez Keras VAE i G/D na backendzie torch.
+- Zapis i wczytanie Sampling/enkodera/dekodera Keras na backendzie torch.
+- Slerp: konce odcinka oraz zdegenerowane wejscia.
+- Entropia: rozklad jednostajny -> 1, jedna klasa -> 0.
+- FID-lite: identyczne cechy -> 0, przesuniecie sredniej daje zgodny wynik analityczny.
+- Jeden krok D i G opcjonalnego PyTorch na danych syntetycznych; odciecie gradientu G
+  w kroku D i brak aktualizacji wag D przez optimizer G.
+- Eksport JSON/CSV/PNG i notebooka z rzeczywistym stdout oraz obrazami; blokada nadpisania.
+
+Czego NIE potwierdzono lokalnym wykonaniem:
+- W srodowisku przygotowania nie ma TensorFlow. Pobranie pakietu zablokowal brak sieci.
+- Nie wykonano calego FAST ani FULL z tf.GradientTape na rzeczywistym MNIST/Fashion-MNIST.
+- Izolowane testy Keras/torch nie zastapuja sprawdzenia TensorFlow train_step.
+- Nie oceniono wygenerowanych cyfr/ubran. W paczce nie ma fikcyjnych wynikow FULL.
+- Nie potwierdzono wszystkich kombinacji wersji zaleznosci na Windows.
+
+Dlatego pierwsze uruchomienie uzytkownika to FAST. Raport powinien wykazac wykonanie
+sekcji, a ocena jakosci modeli nastapi dopiero po treningu FULL i obejrzeniu obrazow.
+
+Jawne dostosowania do pracy lokalnej:
+1. Osobny .venv Lab07. Bez Colaba; TensorFlow backend; bez CUDA w tej konfiguracji.
+2. Osobny profil balanced. FULL zachowuje liczby epok i architektury z szablonu.
+3. VAE: walidacja 10% treningu zamiast oficjalnego testu w fit. Zmiana jest opisana
+   na poczatku notebooka; przy FULL pula 60000 dzieli sie na 54000 train / 6000 val.
+4. W PyTorch te same pobrane obrazy trafiaja do TensorDataset, bez torchvision i
+   bez duplikowania pobierania. Domyslnie CPU. Etykiety nie trafiaja do GAN.
+5. Porownanie beta: nowe sieci i optimizery oraz wspolny seed i budzet.
+6. FID-lite: rowne liczby probek, rozlaczne polowki realnych danych, kontrola bledow sqrtm.
+7. Oddzielne wykresy zamiast ciasnych paneli. Migawki GAN z tego samego szumu.
+8. Przykladowe liczby z funkcji raport_powtorzen usunieto z wynikow, aby nie udawaly pomiarow.
+9. Brak automatycznej deklaracji braku mode collapse lub zaliczenia laboratorium.
+10. Zapisane wagi sa pomocnicze; nie udostepniono automatycznego resume.

@@ -1,0 +1,464 @@
+{
+  "profil": "full",
+  "konfiguracja": {
+    "profile": "full",
+    "bonus": true,
+    "pytorch": false,
+    "seed": 42,
+    "threads": 4,
+    "overwrite": false
+  },
+  "status": "UKONCZONO_DO_OCENY_WYNIKOW",
+  "etap": "komorka_60",
+  "seed": 42,
+  "czas_start": "2026-10-15T07:35:34.688978+00:00",
+  "testy": {
+    "zakresy_i_podzial": true,
+    "sampling": true,
+    "skala_bce_i_kl": true,
+    "interpolacja_vae": true,
+    "ksztalty_G_D": true,
+    "slerp_konce": true,
+    "frechet_tozsamosc": true
+  },
+  "sekcje_wykonane": [
+    "dane",
+    "2.1",
+    "2.2",
+    "2.3",
+    "2.4",
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.4",
+    "bonus_fid_lite",
+    "podsumowanie"
+  ],
+  "ostrzezenia": [],
+  "wykresy": [
+    "wykresy/01_dane_mnist.png",
+    "wykresy/02_dane_fashion.png",
+    "wykresy/03_vae_loss.png",
+    "wykresy/04_vae_rec_loss.png",
+    "wykresy/05_vae_kl_loss.png",
+    "wykresy/06_vae_latent_test.png",
+    "wykresy/07_vae_siatka_kwantyli.png",
+    "wykresy/08_vae_rekonstrukcje.png",
+    "wykresy/09_vae_losowe_probki.png",
+    "wykresy/10_vae_interpolacja.png",
+    "wykresy/11_beta_0_1_latent.png",
+    "wykresy/12_beta_1_0_latent.png",
+    "wykresy/13_beta_4_0_latent.png",
+    "wykresy/14_gan_straty.png",
+    "wykresy/15_gan_diagnostyki_D.png",
+    "wykresy/16_gan_ewolucja_probek.png",
+    "wykresy/17_gan_nowe_probki.png",
+    "wykresy/18_gan_interpolacje.png",
+    "wykresy/19_gan_normy_interpolacji.png",
+    "wykresy/20_gan_histogram_klas.png",
+    "wykresy/21_gan_najblizsi_sasiedzi.png",
+    "wykresy/22_fid_lite.png"
+  ],
+  "biblioteki": {
+    "python": "3.11.9",
+    "tensorflow": "2.20.0",
+    "keras": "3.15.1",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "backend_keras": "tensorflow"
+  },
+  "uwagi_metodyczne": [
+    "VAE: walidacja to 10% puli treningowej, nie oficjalny test.",
+    "GAN i klasyfikator: trening na puli Fashion-MNIST danego profilu.",
+    "Eksperyment beta: ten sam seed i budzet, niezalezne modele.",
+    "Entropy/confidence/FID-lite nie sa dowodem braku mode collapse.",
+    "Czasy pierwszych epok obejmuja kompilacje grafu."
+  ],
+  "sha256_zrodel": {
+    "lab07_rozwiazanie.py": "8798396821296758536f67b268e50266d8e80207c88d865727499a3fb9020a82",
+    "Lab07_uzupelniony.ipynb": "d8700e8d7dd855ea092c65ecc9f21830686ea8a2d7c3790db7127370e0ba8688"
+  },
+  "czas_dotychczas_s": 3407.13,
+  "limity": {
+    "n": 60000,
+    "test": 10000,
+    "vae": 30,
+    "krotko": 10,
+    "gan": 30,
+    "torch": 10,
+    "latent": 128,
+    "batch": 128,
+    "clf": 5,
+    "gen": 5000
+  },
+  "gpu_tensorflow": [],
+  "opcjonalne": {
+    "pytorch": "pominieto",
+    "fid_lite": "wykonano"
+  },
+  "dane": {
+    "mnist_pula_train": 60000,
+    "vae_train": 54000,
+    "vae_val": 6000,
+    "mnist_test": 10000,
+    "fashion_train": 60000,
+    "fashion_test": 10000,
+    "dane": "MNIST i Fashion-MNIST z keras.datasets"
+  },
+  "zad_2_1": {
+    "srednia": [
+      3.007594108581543,
+      2.9970738887786865
+    ],
+    "std": [
+      0.5015829801559448,
+      0.4990575909614563
+    ]
+  },
+  "postep": {
+    "vae": {
+      "epoka": 30,
+      "czas_epoki_s": 17.74,
+      "metryki": {
+        "kl_loss": 6.336150646209717,
+        "loss": 148.53697204589844,
+        "rec_loss": 142.20074462890625,
+        "val_kl_loss": 6.295916557312012,
+        "val_loss": 151.42681884765625,
+        "val_rec_loss": 145.13092041015625
+      }
+    },
+    "beta_0.1": {
+      "epoka": 10,
+      "czas_epoki_s": 21.5,
+      "metryki": {
+        "kl_loss": 10.275040626525879,
+        "loss": 147.7215576171875,
+        "rec_loss": 146.69407653808594,
+        "val_kl_loss": 10.4785737991333,
+        "val_loss": 148.61917114257812,
+        "val_rec_loss": 147.57131958007812
+      }
+    },
+    "beta_1.0": {
+      "epoka": 10,
+      "czas_epoki_s": 21.388,
+      "metryki": {
+        "kl_loss": 5.927158355712891,
+        "loss": 153.32513427734375,
+        "rec_loss": 147.39808654785156,
+        "val_kl_loss": 5.995001792907715,
+        "val_loss": 154.26400756835938,
+        "val_rec_loss": 148.2689971923828
+      }
+    },
+    "beta_4.0": {
+      "epoka": 10,
+      "czas_epoki_s": 20.579,
+      "metryki": {
+        "kl_loss": 3.8707284927368164,
+        "loss": 171.6087188720703,
+        "rec_loss": 156.1258087158203,
+        "val_kl_loss": 3.8050475120544434,
+        "val_loss": 172.6780242919922,
+        "val_rec_loss": 157.45782470703125
+      }
+    },
+    "gan": {
+      "epoka": 30,
+      "czas_epoki_s": 68.128,
+      "metryki": {
+        "D_fake": 0.3868655264377594,
+        "D_real": 0.5127729177474976,
+        "d_loss": 1.2412351369857788,
+        "g_loss": 1.0131756067276
+      }
+    },
+    "klasyfikator": {
+      "epoka": 5,
+      "czas_epoki_s": 10.986,
+      "metryki": {
+        "accuracy": 0.9100499749183655,
+        "loss": 0.24884715676307678
+      }
+    }
+  },
+  "historie": {
+    "vae": {
+      "epoki": 30,
+      "ostatnie": {
+        "kl_loss": 6.336150646209717,
+        "loss": 148.53697204589844,
+        "rec_loss": 142.20074462890625,
+        "val_kl_loss": 6.295916557312012,
+        "val_loss": 151.42681884765625,
+        "val_rec_loss": 145.13092041015625
+      },
+      "csv": "historia_vae.csv"
+    },
+    "beta_0_1": {
+      "epoki": 10,
+      "ostatnie": {
+        "kl_loss": 10.275040626525879,
+        "loss": 147.7215576171875,
+        "rec_loss": 146.69407653808594,
+        "val_kl_loss": 10.4785737991333,
+        "val_loss": 148.61917114257812,
+        "val_rec_loss": 147.57131958007812
+      },
+      "csv": "historia_beta_0_1.csv"
+    },
+    "beta_1_0": {
+      "epoki": 10,
+      "ostatnie": {
+        "kl_loss": 5.927158355712891,
+        "loss": 153.32513427734375,
+        "rec_loss": 147.39808654785156,
+        "val_kl_loss": 5.995001792907715,
+        "val_loss": 154.26400756835938,
+        "val_rec_loss": 148.2689971923828
+      },
+      "csv": "historia_beta_1_0.csv"
+    },
+    "beta_4_0": {
+      "epoki": 10,
+      "ostatnie": {
+        "kl_loss": 3.8707284927368164,
+        "loss": 171.6087188720703,
+        "rec_loss": 156.1258087158203,
+        "val_kl_loss": 3.8050475120544434,
+        "val_loss": 172.6780242919922,
+        "val_rec_loss": 157.45782470703125
+      },
+      "csv": "historia_beta_4_0.csv"
+    },
+    "gan": {
+      "epoki": 30,
+      "ostatnie": {
+        "D_fake": 0.3868655264377594,
+        "D_real": 0.5127729177474976,
+        "d_loss": 1.2412351369857788,
+        "g_loss": 1.0131756067276
+      },
+      "csv": "historia_gan.csv"
+    },
+    "klasyfikator": {
+      "epoki": 5,
+      "ostatnie": {
+        "accuracy": 0.9100499749183655,
+        "loss": 0.24884715676307678
+      },
+      "csv": "historia_klasyfikator.csv"
+    }
+  },
+  "zad_2_2": {
+    "czas_s": 542.47,
+    "parametry": 134165,
+    "train_ostatnie": {
+      "kl_loss": 6.336150646209717,
+      "loss": 148.53697204589844,
+      "rec_loss": 142.20074462890625,
+      "val_kl_loss": 6.295916557312012,
+      "val_loss": 151.42681884765625,
+      "val_rec_loss": 145.13092041015625
+    },
+    "ocena_test": {
+      "kl_loss": 6.281389236450195,
+      "loss": 149.91036987304688,
+      "rec_loss": 143.6289825439453
+    }
+  },
+  "latent_vae": {
+    "srednia_mu": [
+      0.2531087100505829,
+      -0.1097407341003418
+    ],
+    "std_mu": [
+      1.1202398538589478,
+      0.9825302958488464
+    ],
+    "srednia_sigma": [
+      0.045522306114435196,
+      0.059621118009090424
+    ]
+  },
+  "roznica_dwoch_losowan_vae": 0.011580592021346092,
+  "zad_2_3": {
+    "ksztalt_piksele": [
+      10,
+      28,
+      28
+    ],
+    "ksztalt_latent": [
+      10,
+      28,
+      28
+    ]
+  },
+  "zad_2_4": {
+    "wyniki": [
+      {
+        "beta": 0.1,
+        "rec_loss": 146.69407653808594,
+        "kl_loss": 10.275040626525879,
+        "val_rec_loss": 147.57131958007812,
+        "val_kl_loss": 10.4785737991333,
+        "std_mu_z1_test": 1.7620322704315186,
+        "std_mu_z2_test": 1.2472660541534424,
+        "mean_sigma_test": 0.018377874046564102,
+        "epoki": 10
+      },
+      {
+        "beta": 1.0,
+        "rec_loss": 147.39808654785156,
+        "kl_loss": 5.927158355712891,
+        "val_rec_loss": 148.2689971923828,
+        "val_kl_loss": 5.995001792907715,
+        "std_mu_z1_test": 1.1114171743392944,
+        "std_mu_z2_test": 0.9820834994316101,
+        "mean_sigma_test": 0.05832333862781525,
+        "epoki": 10
+      },
+      {
+        "beta": 4.0,
+        "rec_loss": 156.1258087158203,
+        "kl_loss": 3.8707284927368164,
+        "val_rec_loss": 157.45782470703125,
+        "val_kl_loss": 3.8050475120544434,
+        "std_mu_z1_test": 0.7732994556427002,
+        "std_mu_z2_test": 1.0104955434799194,
+        "mean_sigma_test": 0.15204709768295288,
+        "epoki": 10
+      }
+    ],
+    "hipoteza": "zgodna z kierunkiem hipotezy",
+    "uwaga": "Jedno ziarno; tabela i chmury latentu wymagaja interpretacji. Brak testu istotnosci."
+  },
+  "zad_3_1": {
+    "parametry_G": 960257,
+    "parametry_D": 138561,
+    "latent_gan": 128,
+    "wyjscie_G": [
+      null,
+      28,
+      28,
+      1
+    ]
+  },
+  "zad_3_2": {
+    "czas_s": 2162.59,
+    "epoki": 30,
+    "ostatnie": {
+      "D_fake": 0.3868655264377594,
+      "D_real": 0.5127729177474976,
+      "d_loss": 1.2412351369857788,
+      "g_loss": 1.0131756067276
+    }
+  },
+  "zad_3_3": {
+    "normy_lin": [
+      12.173322677612305,
+      10.838672637939453,
+      9.671566009521484,
+      8.73938274383545,
+      8.123406410217285,
+      7.897970676422119,
+      8.0957670211792,
+      8.687934875488281,
+      9.601785659790039,
+      10.755633354187012
+    ],
+    "normy_slerp": [
+      12.173322677612305,
+      12.140950202941895,
+      12.02724838256836,
+      11.844588279724121,
+      11.61353874206543,
+      11.361427307128906,
+      11.119889259338379,
+      10.921198844909668,
+      10.793482780456543,
+      10.755633354187012
+    ],
+    "uwaga": "Losowe konce maja rozne normy, slerp nie musi miec idealnie stalego promienia."
+  },
+  "klasyfikator": {
+    "accuracy": 0.9088000059127808,
+    "loss": 0.2489895075559616,
+    "czas_s": 56.99
+  },
+  "zad_3_4": {
+    "n_gen": 5000,
+    "n_real": 10000,
+    "entropia_gen": 0.9899702340086801,
+    "entropia_real": 0.9995439376913728,
+    "pewnosc_gen": 0.7800750732421875,
+    "pewnosc_real": 0.9163368940353394,
+    "histogram_gen": [
+      576,
+      406,
+      359,
+      599,
+      560,
+      345,
+      694,
+      529,
+      435,
+      497
+    ],
+    "histogram_real_predykcje": [
+      1018,
+      991,
+      900,
+      1052,
+      1066,
+      996,
+      980,
+      1042,
+      986,
+      969
+    ],
+    "uwaga": "Brak automatycznego werdyktu mode collapse. Sprawdz obrazy i jakosc klasyfikatora."
+  },
+  "sasiedzi": {
+    "odleglosci": [
+      3.306239128112793,
+      5.130979537963867,
+      3.9288041591644287,
+      5.348396301269531,
+      3.371643543243408,
+      5.940493583679199,
+      5.055941581726074,
+      3.891691207885742
+    ],
+    "indeksy_train": [
+      58007,
+      6350,
+      44070,
+      420,
+      38336,
+      9869,
+      54969,
+      7535
+    ],
+    "uwaga": "8 par nie dowodzi braku zapamietywania. Odleglosc w cechach != identycznosc pikseli."
+  },
+  "bonus_fid_lite": {
+    "odleglosci": {
+      "real_A_vs_real_B": 0.2688739341081886,
+      "GAN_Keras": 15.376386037276795,
+      "G_nietrenowany": 270.1757290453318
+    },
+    "liczba_obrazow_na_zbior": 5000,
+    "cechy": 64,
+    "uwaga": "FID-lite, nie oryginalny Inception FID. Brak porownywalnosci z literatura."
+  },
+  "bonus_wykonany": true,
+  "pytorch_wykonany": false,
+  "liczba_wykresow": 22,
+  "czas_eksperymentu_s": 3407.13,
+  "czas_koniec": "2026-10-15T08:32:21.840086+00:00"
+}

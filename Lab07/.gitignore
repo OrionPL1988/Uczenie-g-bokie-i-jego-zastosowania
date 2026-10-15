@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+wyniki_fast/
+wyniki_balanced/
+wyniki_*/modele/
+*.weights.h5
+*.keras
+*.pt
+*.npz
+*.tmp

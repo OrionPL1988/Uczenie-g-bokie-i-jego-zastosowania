@@ -1,0 +1,67 @@
+WYMAGANIA ZE ZRODLOWEGO NOTEBOOKA LAB07
+
+## 6. Sprawozdanie końcowe z laboratorium - instrukcja
+
+Zgodnie z kartą przedmiotu ocena z laboratorium obejmuje **aktywność na zajęciach, wykonanie ćwiczeń i przesłanie sprawozdania podsumowującego po ostatnich zajęciach**. Ocena końcowa z przedmiotu = 60% kolokwium + 40% laboratorium (aktywność + sprawozdanie); obie części muszą być zaliczone pozytywnie.
+
+### Termin i forma
+- **Jedno sprawozdanie indywidualne** w formacie **PDF** (zalecane 10-15 stron bez załączników), przesłane w terminie i kanałem podanym przez prowadzącą.
+- Do sprawozdania dołącz **link do notebooka Colab** z mini-projektem (udostępnienie "każdy, kto ma link - przeglądający") albo plik `.ipynb` **z zapisanymi wynikami komórek**.
+- Nazwa pliku: `UG_Sprawozdanie_Nazwisko_Imie_nrIndeksu.pdf`.
+
+### Wymagana struktura
+1. **Strona tytułowa:** imię i nazwisko, nr indeksu, kierunek i semestr, nazwa kursu, prowadząca, data.
+2. **Wybrane wyniki z Lab 3-7** (ok. 1-2 strony na laboratorium). W każdym laboratorium sekcja "Do sprawozdania końcowego" mówi, co pokazać. Każdy wykres musi mieć tytuł, opisane osie, legendę i **1-3 zdania interpretacji** (co widać, dlaczego, co z tego wynika).
+3. **Mini-projekt - własny eksperyment** (najważniejsza część, ok. 4-6 stron):
+   - **problem i zbiór danych** - wyłącznie zbiory używane na kursie (`keras.datasets`: MNIST, Fashion-MNIST, CIFAR-10; `sklearn.datasets`; `torchvision` MNIST/FashionMNIST) lub inne publiczne po uzgodnieniu z prowadzącą,
+   - **hipoteza** sformułowana przed eksperymentem, w postaci sprawdzalnej, np. *"Autoenkoder konwolucyjny wykryje anomalie (klasa 'sandał') w Fashion-MNIST z wyższym ROC-AUC niż autoenkoder gęsty o tej samej liczbie parametrów"* (**UGŁ_U01**),
+   - **metodyka** - architektura(y), hiperparametry, podział danych, metryki, baseline (np. model klasyczny lub prostszy model sieciowy), liczba powtórzeń (seedy),
+   - **wyniki** - tabela i wykresy, najlepiej średnia ± odchylenie standardowe z co najmniej 3 uruchomień,
+   - **weryfikacja hipotezy** - potwierdzona / odrzucona / częściowo, z uzasadnieniem liczbowym,
+   - **propozycja usprawnienia** opartego na istniejących bibliotekach (np. inna architektura, regularyzacja, augmentacja, transfer learning, tuning KerasTuner/Optuna), **najlepiej sprawdzona eksperymentalnie** (**UGŁ_U02**).
+4. **Wnioski i ograniczenia** (0,5-1 strona): co się udało, czego nie wiemy, co zrobiłbyś dalej.
+5. **Bibliografia:** co najmniej 3 pozycje, w tym min. 1 z literatury przedmiotu i min. 1 artykuł naukowy lub dokumentacja (keras.io, pytorch.org) - **UGŁ_K01**.
+6. **Oświadczenie o samodzielności** i informacja o użyciu narzędzi AI (do czego, w jakim zakresie). Kod i tekst muszą być rozumiane przez autora - prowadząca może poprosić o krótkie omówienie.
+
+### Przykładowe tematy mini-projektu
+- VAE vs AE vs PCA jako ekstraktor cech dla k-means na Fashion-MNIST (ARI/NMI).
+- Wpływ $\beta$ i wymiaru latentu VAE na jakość rekonstrukcji i różnorodność próbek.
+- DCGAN vs DCGAN z innymi technikami stabilizacji (label smoothing, spectral norm, różne lr D i G) - porównanie entropii klas / FID-lite.
+- Transfer learning vs CNN od zera na podzbiorach CIFAR-10 różnej wielkości (krzywa uczenia w funkcji liczby danych).
+- Sieć MLP (PyTorch) vs HistGradientBoosting na `fetch_california_housing` lub `load_breast_cancer` z walidacją krzyżową i analizą wycieku danych.
+
+### Checklista przed wysłaniem sprawozdania
+
+**Forma**
+- [ ] PDF z poprawną nazwą pliku, strona tytułowa kompletna
+- [ ] link do notebooka Colab działa (sprawdzone w trybie incognito) lub dołączony `.ipynb` z wynikami
+- [ ] notebook wykonuje się od początku do końca (Środowisko wykonawcze -> Uruchom wszystko) bez błędów
+- [ ] seedy ustawione, wersje bibliotek podane (komórka poniżej)
+
+**Treść z Lab 3-7**
+- [ ] z każdego laboratorium 3-7 co najmniej jeden wynik zgodny z sekcją "Do sprawozdania końcowego"
+- [ ] wszystkie wykresy mają tytuł, opisy osi, legendę i interpretację w tekście
+- [ ] liczby w tabelach mają jednostki / nazwy metryk i rozsądną liczbę cyfr znaczących
+
+**Mini-projekt**
+- [ ] hipoteza sformułowana wprost, **przed** opisem wyników
+- [ ] jest baseline i uczciwe porównanie (ten sam podział danych, podobny budżet treningu)
+- [ ] brak wycieku danych: skalowanie / PCA / wybór progu dopasowane tylko na zbiorze treningowym (walidacyjnym)
+- [ ] zbiór testowy użyty tylko do końcowej oceny, nie do wyboru hiperparametrów
+- [ ] wyniki z kilku uruchomień (średnia ± odch. std.) lub uzasadnienie, dlaczego jedno
+- [ ] jasna odpowiedź: hipoteza potwierdzona / odrzucona / częściowo - z liczbami
+- [ ] propozycja usprawnienia (UGŁ_U02), najlepiej sprawdzona eksperymentalnie
+
+**Na koniec**
+- [ ] wnioski i ograniczenia
+- [ ] bibliografia (min. 3 pozycje, cytowania w tekście)
+- [ ] oświadczenie o samodzielności i o użyciu narzędzi AI
+
+## Do sprawozdania końcowego
+
+Z tego laboratorium umieść w sprawozdaniu:
+1. Przestrzeń latentną VAE (wykres `z_mean`) i siatkę wygenerowanych cyfr z interpretacją (czy przestrzeń jest regularna? gdzie leżą które cyfry?).
+2. Wyniki eksperymentu z $\beta$ (Zadanie 2.4) - tabela + **hipoteza i jej weryfikacja**.
+3. Krzywe strat GAN, wykres $D(x)$ / $D(G(z))$ oraz planszę ewolucji próbek po epokach - z komentarzem, dlaczego straty nie mówią o jakości.
+4. Ocenę różnorodności (entropia klas, pewność klasyfikatora) i odpowiedź: czy wystąpił mode collapse?
+5. *(Opcjonalnie)* porównanie implementacji Keras i PyTorch (czas epoki, wygląd próbek) lub wynik zadania dodatkowego (FID-lite) - dobry punkt wyjścia do mini-projektu.
